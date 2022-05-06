@@ -34,7 +34,7 @@ struct FirstView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("New") {
+                    Button("new") {
                         isShowSheet.toggle()
                     }
                 }
