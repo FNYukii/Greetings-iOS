@@ -9,7 +9,23 @@ import SwiftUI
 
 struct FirstView: View {
     var body: some View {
-        Text("FirstView")
+        NavigationView {
+            List {
+                Text("Hello")
+                Text("Hey")
+            }
+            
+            .navigationTitle("home")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("New") {
+                        
+                    }
+                }
+            }
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
