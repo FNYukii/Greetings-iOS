@@ -17,6 +17,16 @@
 		542E342F2824D93900D70981 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E342E2824D93900D70981 /* ThirdView.swift */; };
 		542E34332824DC9F00D70981 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E34322824DC9F00D70981 /* CreateView.swift */; };
 		542E34352824F7A100D70981 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E34342824F7A100D70981 /* PostRow.swift */; };
+		542E34372825239500D70981 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 542E34362825239500D70981 /* GoogleService-Info.plist */; };
+		542E343A28252EE300D70981 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 542E343928252EE300D70981 /* FirebaseAuth */; };
+		542E343C28252EE300D70981 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 542E343B28252EE300D70981 /* FirebaseFirestore */; };
+		542E343E28252EE300D70981 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 542E343D28252EE300D70981 /* FirebaseStorage */; };
+		542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E343F282531CE00D70981 /* SignInStateViewModel.swift */; };
+		542E3442282531EE00D70981 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3441282531EE00D70981 /* WelcomeView.swift */; };
+		542E3444282533DD00D70981 /* FirebaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3443282533DD00D70981 /* FirebaseAuthView.swift */; };
+		542E3447282534A600D70981 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 542E3446282534A600D70981 /* FirebaseAuthUI */; };
+		542E3449282534A600D70981 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 542E3448282534A600D70981 /* FirebaseGoogleAuthUI */; };
+		542E344C2825361D00D70981 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E344B2825361D00D70981 /* CurrentUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +41,12 @@
 		542E342E2824D93900D70981 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		542E34322824DC9F00D70981 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		542E34342824F7A100D70981 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
+		542E34362825239500D70981 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		542E343F282531CE00D70981 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
+		542E3441282531EE00D70981 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		542E3443282533DD00D70981 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
+		542E344A2825356E00D70981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		542E344B2825361D00D70981 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +54,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542E3449282534A600D70981 /* FirebaseGoogleAuthUI in Frameworks */,
+				542E343A28252EE300D70981 /* FirebaseAuth in Frameworks */,
+				542E343C28252EE300D70981 /* FirebaseFirestore in Frameworks */,
+				542E343E28252EE300D70981 /* FirebaseStorage in Frameworks */,
+				542E3447282534A600D70981 /* FirebaseAuthUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +85,8 @@
 		542E34142824D43800D70981 /* Greetings */ = {
 			isa = PBXGroup;
 			children = (
+				542E344A2825356E00D70981 /* Info.plist */,
+				542E34362825239500D70981 /* GoogleService-Info.plist */,
 				542E34152824D43800D70981 /* GreetingsApp.swift */,
 				542E34252824D83500D70981 /* screens */,
 				542E34262824D84100D70981 /* components */,
@@ -88,10 +111,12 @@
 			isa = PBXGroup;
 			children = (
 				542E34172824D43800D70981 /* ContentView.swift */,
+				542E3441282531EE00D70981 /* WelcomeView.swift */,
 				542E342A2824D92600D70981 /* FirstView.swift */,
 				542E342C2824D92F00D70981 /* SecondView.swift */,
 				542E342E2824D93900D70981 /* ThirdView.swift */,
 				542E34322824DC9F00D70981 /* CreateView.swift */,
+				542E3443282533DD00D70981 /* FirebaseAuthView.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -107,6 +132,7 @@
 		542E34272824D85B00D70981 /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
+				542E343F282531CE00D70981 /* SignInStateViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -121,6 +147,7 @@
 		542E34292824D87300D70981 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				542E344B2825361D00D70981 /* CurrentUser.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -141,6 +168,13 @@
 			dependencies = (
 			);
 			name = Greetings;
+			packageProductDependencies = (
+				542E343928252EE300D70981 /* FirebaseAuth */,
+				542E343B28252EE300D70981 /* FirebaseFirestore */,
+				542E343D28252EE300D70981 /* FirebaseStorage */,
+				542E3446282534A600D70981 /* FirebaseAuthUI */,
+				542E3448282534A600D70981 /* FirebaseGoogleAuthUI */,
+			);
 			productName = Greetings;
 			productReference = 542E34122824D43800D70981 /* Greetings.app */;
 			productType = "com.apple.product-type.application";
@@ -169,6 +203,10 @@
 				Base,
 			);
 			mainGroup = 542E34092824D43800D70981;
+			packageReferences = (
+				542E343828252EE300D70981 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				542E3445282534A600D70981 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
+			);
 			productRefGroup = 542E34132824D43800D70981 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -184,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				542E341D2824D43A00D70981 /* Preview Assets.xcassets in Resources */,
+				542E34372825239500D70981 /* GoogleService-Info.plist in Resources */,
 				542E34242824D4A600D70981 /* .gitignore in Resources */,
 				542E341A2824D43A00D70981 /* Assets.xcassets in Resources */,
 			);
@@ -198,7 +237,11 @@
 			files = (
 				542E34182824D43800D70981 /* ContentView.swift in Sources */,
 				542E34352824F7A100D70981 /* PostRow.swift in Sources */,
+				542E344C2825361D00D70981 /* CurrentUser.swift in Sources */,
+				542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */,
+				542E3444282533DD00D70981 /* FirebaseAuthView.swift in Sources */,
 				542E342F2824D93900D70981 /* ThirdView.swift in Sources */,
+				542E3442282531EE00D70981 /* WelcomeView.swift in Sources */,
 				542E342B2824D92600D70981 /* FirstView.swift in Sources */,
 				542E342D2824D92F00D70981 /* SecondView.swift in Sources */,
 				542E34332824DC9F00D70981 /* CreateView.swift in Sources */,
@@ -334,6 +377,7 @@
 				DEVELOPMENT_TEAM = RY7754Y275;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Greetings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -363,6 +407,7 @@
 				DEVELOPMENT_TEAM = RY7754Y275;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Greetings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -403,6 +448,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		542E343828252EE300D70981 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		542E3445282534A600D70981 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/FirebaseUI-iOS.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		542E343928252EE300D70981 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 542E343828252EE300D70981 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		542E343B28252EE300D70981 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 542E343828252EE300D70981 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		542E343D28252EE300D70981 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 542E343828252EE300D70981 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		542E3446282534A600D70981 /* FirebaseAuthUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 542E3445282534A600D70981 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseAuthUI;
+		};
+		542E3448282534A600D70981 /* FirebaseGoogleAuthUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 542E3445282534A600D70981 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseGoogleAuthUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 542E340A2824D43800D70981 /* Project object */;
 }
