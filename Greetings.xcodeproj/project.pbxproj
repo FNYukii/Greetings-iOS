@@ -15,6 +15,7 @@
 		542E342B2824D92600D70981 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E342A2824D92600D70981 /* FirstView.swift */; };
 		542E342D2824D92F00D70981 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E342C2824D92F00D70981 /* SecondView.swift */; };
 		542E342F2824D93900D70981 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E342E2824D93900D70981 /* ThirdView.swift */; };
+		542E34332824DC9F00D70981 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E34322824DC9F00D70981 /* CreateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		542E342A2824D92600D70981 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		542E342C2824D92F00D70981 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		542E342E2824D93900D70981 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
+		542E34322824DC9F00D70981 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				542E342A2824D92600D70981 /* FirstView.swift */,
 				542E342C2824D92F00D70981 /* SecondView.swift */,
 				542E342E2824D93900D70981 /* ThirdView.swift */,
+				542E34322824DC9F00D70981 /* CreateView.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				542E342F2824D93900D70981 /* ThirdView.swift in Sources */,
 				542E342B2824D92600D70981 /* FirstView.swift in Sources */,
 				542E342D2824D92F00D70981 /* SecondView.swift in Sources */,
+				542E34332824DC9F00D70981 /* CreateView.swift in Sources */,
 				542E34162824D43800D70981 /* GreetingsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

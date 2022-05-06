@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FirstView: View {
+    
+    @State private var isShowSheet = false
+    
     var body: some View {
         NavigationView {
             List {
@@ -15,12 +18,16 @@ struct FirstView: View {
                 Text("Hey")
             }
             
+            .sheet(isPresented: $isShowSheet) {
+                CreateView()
+            }
+            
             .navigationTitle("home")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("New") {
-                        
+                        isShowSheet.toggle()
                     }
                 }
             }
