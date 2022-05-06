@@ -26,6 +26,7 @@
 		542E3444282533DD00D70981 /* FirebaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3443282533DD00D70981 /* FirebaseAuthView.swift */; };
 		542E3447282534A600D70981 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 542E3446282534A600D70981 /* FirebaseAuthUI */; };
 		542E3449282534A600D70981 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 542E3448282534A600D70981 /* FirebaseGoogleAuthUI */; };
+		542E344C2825361D00D70981 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E344B2825361D00D70981 /* CurrentUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		542E3441282531EE00D70981 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		542E3443282533DD00D70981 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 		542E344A2825356E00D70981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		542E344B2825361D00D70981 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		542E34292824D87300D70981 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				542E344B2825361D00D70981 /* CurrentUser.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			files = (
 				542E34182824D43800D70981 /* ContentView.swift in Sources */,
 				542E34352824F7A100D70981 /* PostRow.swift in Sources */,
+				542E344C2825361D00D70981 /* CurrentUser.swift in Sources */,
 				542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */,
 				542E3444282533DD00D70981 /* FirebaseAuthView.swift in Sources */,
 				542E342F2824D93900D70981 /* ThirdView.swift in Sources */,
