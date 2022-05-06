@@ -21,6 +21,9 @@
 		542E343A28252EE300D70981 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 542E343928252EE300D70981 /* FirebaseAuth */; };
 		542E343C28252EE300D70981 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 542E343B28252EE300D70981 /* FirebaseFirestore */; };
 		542E343E28252EE300D70981 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 542E343D28252EE300D70981 /* FirebaseStorage */; };
+		542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E343F282531CE00D70981 /* SignInStateViewModel.swift */; };
+		542E3442282531EE00D70981 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3441282531EE00D70981 /* WelcomeView.swift */; };
+		542E3444282533DD00D70981 /* FirebaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3443282533DD00D70981 /* FirebaseAuthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		542E34322824DC9F00D70981 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		542E34342824F7A100D70981 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		542E34362825239500D70981 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		542E343F282531CE00D70981 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
+		542E3441282531EE00D70981 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		542E3443282533DD00D70981 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,10 +103,12 @@
 			isa = PBXGroup;
 			children = (
 				542E34172824D43800D70981 /* ContentView.swift */,
+				542E3441282531EE00D70981 /* WelcomeView.swift */,
 				542E342A2824D92600D70981 /* FirstView.swift */,
 				542E342C2824D92F00D70981 /* SecondView.swift */,
 				542E342E2824D93900D70981 /* ThirdView.swift */,
 				542E34322824DC9F00D70981 /* CreateView.swift */,
+				542E3443282533DD00D70981 /* FirebaseAuthView.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -116,6 +124,7 @@
 		542E34272824D85B00D70981 /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
+				542E343F282531CE00D70981 /* SignInStateViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -216,7 +225,10 @@
 			files = (
 				542E34182824D43800D70981 /* ContentView.swift in Sources */,
 				542E34352824F7A100D70981 /* PostRow.swift in Sources */,
+				542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */,
+				542E3444282533DD00D70981 /* FirebaseAuthView.swift in Sources */,
 				542E342F2824D93900D70981 /* ThirdView.swift in Sources */,
+				542E3442282531EE00D70981 /* WelcomeView.swift in Sources */,
 				542E342B2824D92600D70981 /* FirstView.swift in Sources */,
 				542E342D2824D92F00D70981 /* SecondView.swift in Sources */,
 				542E34332824DC9F00D70981 /* CreateView.swift in Sources */,
