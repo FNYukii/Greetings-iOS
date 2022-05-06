@@ -55,7 +55,11 @@
 			isa = PBXGroup;
 			children = (
 				542E34152824D43800D70981 /* GreetingsApp.swift */,
-				542E34172824D43800D70981 /* ContentView.swift */,
+				542E34252824D83500D70981 /* screens */,
+				542E34262824D84100D70981 /* components */,
+				542E34282824D86A00D70981 /* models */,
+				542E34272824D85B00D70981 /* viewModels */,
+				542E34292824D87300D70981 /* Utilities */,
 				542E34192824D43A00D70981 /* Assets.xcassets */,
 				542E341B2824D43A00D70981 /* Preview Content */,
 			);
@@ -68,6 +72,42 @@
 				542E341C2824D43A00D70981 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		542E34252824D83500D70981 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				542E34172824D43800D70981 /* ContentView.swift */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		542E34262824D84100D70981 /* components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		542E34272824D85B00D70981 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		542E34282824D86A00D70981 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		542E34292824D87300D70981 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
