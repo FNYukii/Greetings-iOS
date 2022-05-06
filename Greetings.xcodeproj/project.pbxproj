@@ -29,6 +29,7 @@
 		542E344C2825361D00D70981 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E344B2825361D00D70981 /* CurrentUser.swift */; };
 		542E344E28253A1F00D70981 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E344D28253A1F00D70981 /* Post.swift */; };
 		542E345028253BE900D70981 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E344F28253BE900D70981 /* User.swift */; };
+		542E345228253DB900D70981 /* FirePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E345128253DB900D70981 /* FirePost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		542E344B2825361D00D70981 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		542E344D28253A1F00D70981 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		542E344F28253BE900D70981 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		542E345128253DB900D70981 /* FirePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				542E344B2825361D00D70981 /* CurrentUser.swift */,
+				542E345128253DB900D70981 /* FirePost.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				542E34352824F7A100D70981 /* PostRow.swift in Sources */,
 				542E344C2825361D00D70981 /* CurrentUser.swift in Sources */,
 				542E344E28253A1F00D70981 /* Post.swift in Sources */,
+				542E345228253DB900D70981 /* FirePost.swift in Sources */,
 				542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */,
 				542E3444282533DD00D70981 /* FirebaseAuthView.swift in Sources */,
 				542E342F2824D93900D70981 /* ThirdView.swift in Sources */,
