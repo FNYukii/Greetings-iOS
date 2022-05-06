@@ -14,30 +14,34 @@ struct PostRow: View {
     let content: String
     
     var body: some View {
-        HStack(alignment: .top) {
-            Image(systemName: "person.crop.circle")
-                .font(.largeTitle)
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text(displayName)
-                        .fontWeight(.bold)
-                        .lineLimit(1)
-                    Text("@\(userName)")
-                        .foregroundColor(.secondary)
-                        .lineLimit(1)
-                    Text("12時間前")
-                        .foregroundColor(.secondary)
-                    Spacer()
-                    Button(action: {
-                        
-                    }) {
-                        Image(systemName: "ellipsis")
+        VStack {
+            HStack(alignment: .top) {
+                Image(systemName: "person.crop.circle")
+                    .font(.largeTitle)
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Text(displayName)
+                            .fontWeight(.bold)
+                            .lineLimit(1)
+                        Text("@\(userName)")
                             .foregroundColor(.secondary)
+                            .lineLimit(1)
+                        Text("12時間前")
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        Button(action: {
+                            // Open menu
+                        }) {
+                            Image(systemName: "ellipsis")
+                                .foregroundColor(.secondary)
+                        }
                     }
+                    Text(content)
                 }
-                Text(content)
             }
+            Divider()
         }
+        
         .padding(.horizontal)
     }
 }
