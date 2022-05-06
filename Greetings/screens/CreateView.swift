@@ -11,12 +11,12 @@ struct CreateView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @State private var content = ""
+    @State private var text = ""
     
     var body: some View {
         NavigationView {
             Form {
-                TextField("hello-world", text: $content)
+                TextField("hello-world", text: $text)
             }
             
             .navigationTitle("new-post")
@@ -30,7 +30,8 @@ struct CreateView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action :{
-                        // TODO: Publish post
+                        FirePost.create(text: text)
+                        dismiss()
                     }) {
                         Text("publish")
                     }
