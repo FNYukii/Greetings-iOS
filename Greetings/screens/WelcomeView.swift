@@ -16,7 +16,9 @@ struct WelcomeView: View {
             isShowSheet.toggle()
         }
         
-        
+        .sheet(isPresented: $isShowSheet) {
+            FirebaseAuthView()
+        }
     }
 }
 
