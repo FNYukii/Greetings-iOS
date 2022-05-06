@@ -25,6 +25,14 @@ struct FirstView: View {
             .navigationTitle("home")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        // TODO: Open profile
+                    }) {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title2)
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("New") {
                         isShowSheet.toggle()
