@@ -41,8 +41,6 @@ struct PostRow: View {
             }
             Divider()
         }
-        
-        .padding(.horizontal)
     }
 }
 
