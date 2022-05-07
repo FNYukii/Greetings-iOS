@@ -17,60 +17,48 @@ struct ProfileView: View {
     
     @State private var isUserLoaded = false
     @State private var isPostsLoaded = false
+    @State private var isFollowersLoaded = false
 
     var body: some View {
         
         ScrollView {
-            VStack {
+            VStack(alignment: .leading) {
                 
-                if !isUserLoaded {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .padding()
-                }
-                
-                if isUserLoaded {
+                HStack {
+                    Image(systemName: "person.crop.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.secondary)
                     VStack(alignment: .leading) {
-                        HStack {
-                            Image(systemName: "person.crop.circle")
-                                .font(.largeTitle)
-                                .foregroundColor(.secondary)
-                            VStack(alignment: .leading) {
-                                Text(user != nil ? user!.displayName : "---")
-                                    .fontWeight(.bold)
-                                Text(user != nil ? user!.userName : "---")
-                                    .foregroundColor(.secondary)
-                            }
-                            Spacer()
-                        }
-                        .padding(.leading)
-                        
-                        Text(user != nil ? user!.introduction : "---")
-                            .padding(.horizontal)
-                            .padding(.vertical, 4)
-                        
-                        HStack {
-                            Text(user != nil ? "\(user!.followings.count)" : "-")
-                            Text("followings")
-                                .foregroundColor(.secondary)
-                                .padding(.trailing)
-                            Text(user != nil ? "\(self.followers.count)" : "-")
-                            Text("followers")
-                                .foregroundColor(.secondary)
-                        }
-                        .padding(.horizontal)
+                        Text(isUserLoaded ? user!.displayName : "---")
+                            .fontWeight(.bold)
+                        Text(isUserLoaded ? user!.userName : "---")
+                            .foregroundColor(.secondary)
                     }
+                    Spacer()
                 }
+                .padding(.leading)
+                
+                Text(isUserLoaded ? user!.introduction : "---")
+                    .padding(.horizontal)
+                    .padding(.vertical, 4)
+                
+                HStack {
+                    Text(isUserLoaded ? "\(user!.followings.count)" : "-")
+                    Text("followings")
+                        .foregroundColor(.secondary)
+                        .padding(.trailing)
+                    Text(isFollowersLoaded ? "\(self.followers.count)" : "-")
+                    Text("followers")
+                        .foregroundColor(.secondary)
+                }
+                .padding(.horizontal)
                 
                 Divider()
                 
                 if !isPostsLoaded {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
-                        .padding()
-                }
-                
-                if isPostsLoaded {
+                } else {
                     ForEach(posts) { post in
                         PostRow(post: post, isNavLinkDisable: true)
                             .listRowSeparator(.hidden)
@@ -82,13 +70,17 @@ struct ProfileView: View {
         .onAppear {
             FireUser.read(id: userId) { user in
                 if let user = user {
-                    self.user = user
-                    self.isUserLoaded = true
+                    withAnimation {
+                        self.user = user
+                        self.isUserLoaded = true
+                    }
                 }
             }
             FirePost.read(userId: userId) { posts in
-                self.posts = posts
-                self.isPostsLoaded = true
+                withAnimation {
+                    self.posts = posts
+                    self.isPostsLoaded = true
+                }
             }
         }
         
