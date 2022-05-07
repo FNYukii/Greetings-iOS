@@ -51,7 +51,17 @@ class FirePost {
         // TODO: Update post
     }
     
-    static func delete() {
+    static func delete(id: String) {
         // TODO: Delete post
+        let db = Firestore.firestore()
+        db.collection("posts")
+            .document(id)
+            .delete() { err in
+            if let err = err {
+                print("HELLO! Fail! Error removing document: \(err)")
+            } else {
+                print("HELLO! Success! Document Post successfully removed!")
+            }
+        }
     }
 }

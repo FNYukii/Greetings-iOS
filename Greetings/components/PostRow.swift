@@ -42,7 +42,7 @@ struct PostRow: View {
                         Menu {
                             if post.userId == FireAuth.userId() {
                                 Button(role: .destructive){
-                                    // TODO: Delete
+                                    FirePost.delete(id: post.id)
                                 } label: {
                                     Label("delete-post", systemImage: "trash")
                                 }
