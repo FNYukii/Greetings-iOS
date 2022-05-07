@@ -19,6 +19,7 @@ struct PostRow: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
+                
                 Image(systemName: "person.crop.circle")
                     .font(.largeTitle)
                     .foregroundColor(.secondary)
@@ -69,7 +70,22 @@ struct PostRow: View {
                         }
                         
                     }
+                    
                     Text(post.text)
+                    
+                    HStack(spacing: 0) {
+                        Button(action: {
+                            // TODO: Like
+                        }) {
+                            Image(systemName: "heart")
+                                .foregroundColor(.secondary)
+                        }
+                        Text("\(post.likedUsers.count)")
+                            .foregroundColor(.secondary)
+                            .font(.callout)
+                            .padding(.leading, 4)
+                    }
+                    .padding(.top, 4)
                 }
             }
             Divider()
