@@ -28,7 +28,7 @@ class FirePost {
         }
     }
     
-    static func create(text: String) {
+    static func createPost(text: String) {
         let userId = FireAuth.userId()
         let db = Firestore.firestore()
         db.collection("posts")
@@ -47,29 +47,29 @@ class FirePost {
             }
     }
     
-    static func like(id: String) {
+    static func likePost(postId: String) {
         let db = Firestore.firestore()
         db.collection("posts")
-            .document(id)
+            .document(postId)
             .updateData([
                 "likedUsers": FieldValue.arrayUnion([FireAuth.userId()])
             ])
     }
     
-    static func unlike(id: String) {
+    static func unlikePost(postId: String) {
         let db = Firestore.firestore()
         db.collection("posts")
-            .document(id)
+            .document(postId)
             .updateData([
                 "likedUsers": FieldValue.arrayRemove([FireAuth.userId()])
             ])
     }
     
-    static func delete(id: String) {
+    static func deletePost(postId: String) {
         // TODO: Delete post
         let db = Firestore.firestore()
         db.collection("posts")
-            .document(id)
+            .document(postId)
             .delete() { err in
             if let err = err {
                 print("HELLO! Fail! Error removing document: \(err)")

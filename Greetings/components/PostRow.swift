@@ -47,7 +47,7 @@ struct PostRow: View {
                         Menu {
                             if post.userId == FireAuth.userId() {
                                 Button(role: .destructive){
-                                    FirePost.delete(id: post.id)
+                                    FirePost.deletePost(postId: post.id)
                                 } label: {
                                     Label("delete-post", systemImage: "trash")
                                 }
@@ -81,9 +81,9 @@ struct PostRow: View {
                     HStack(spacing: 0) {
                         Button(action: {
                             if !post.likedUsers.contains(FireAuth.userId()) {
-                                FirePost.like(id: post.id)
+                                FirePost.likePost(postId: post.id)
                             } else {
-                                FirePost.unlike(id: post.id)
+                                FirePost.unlikePost(postId: post.id)
                             }
                         }) {
                             if !post.likedUsers.contains(FireAuth.userId()) {
@@ -109,7 +109,7 @@ struct PostRow: View {
         
         .onAppear {
             let userId = post.userId
-            FireUser.read(id: userId) { user in
+            FireUser.readUser(userId: userId) { user in
                 if let user = user {
                     withAnimation {
                         self.user = user

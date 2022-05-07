@@ -29,7 +29,7 @@ struct CreatePostView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action :{
-                        FirePost.create(text: text)
+                        FirePost.createPost(text: text)
                         dismiss()
                     }) {
                         Text("publish")

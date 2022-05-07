@@ -68,7 +68,7 @@ struct ProfileView: View {
         }
         
         .onAppear {
-            FireUser.read(id: userId) { user in
+            FireUser.readUser(userId: userId) { user in
                 if let user = user {
                     withAnimation {
                         self.user = user
@@ -82,7 +82,7 @@ struct ProfileView: View {
                     self.isPostsLoaded = true
                 }
             }
-            FireUser.readFollowers(id: userId) { users in
+            FireUser.readFollowers(userId: userId) { users in
                 withAnimation {
                     self.followers = users
                     self.isFollowersLoaded = true
@@ -113,7 +113,7 @@ struct ProfileView: View {
                     }
                 } else {
                     Button("follow") {
-                        FireUser.follow(userId: userId)
+                        FireUser.followUser(userId: userId)
                     }
                 }
             }

@@ -53,7 +53,7 @@ struct SignUpView: View {
                     Button(action :{
                         FireAuth.signUp(email: email, password: password) { userId in
                             if let userId = userId {
-                                FireUser.create(id: userId, userName: userName, displayName: displayName, introduction: introduction, icon: nil)
+                                FireUser.createUser(userId: userId, userName: userName, displayName: displayName, introduction: introduction, icon: nil)
                             }
                         }
                         dismiss()
