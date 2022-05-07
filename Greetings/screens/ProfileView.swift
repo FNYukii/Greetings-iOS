@@ -22,22 +22,28 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     Text(user != nil ? user!.displayName : "nothing")
                     Text(user != nil ? user!.userName : "nothing")
+                        .foregroundColor(.secondary)
                 }
                 Spacer()
             }
             .padding(.leading)
             
             Text(user != nil ? user!.introduction : "nothing")
-                .padding()
+                .padding(.horizontal)
+                .padding(.vertical, 4)
             
             HStack {
                 Text(user != nil ? "\(user!.followings.count)" : "nothing")
                 Text("followings")
+                    .foregroundColor(.secondary)
                     .padding(.trailing)
                 Text(user != nil ? "\(user!.followers.count)" : "nothing")
                 Text("followers")
+                    .foregroundColor(.secondary)
             }
             .padding(.horizontal)
+            
+            Divider()
             
             Spacer()
             
