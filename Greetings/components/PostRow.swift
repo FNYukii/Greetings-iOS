@@ -77,11 +77,16 @@ struct PostRow: View {
                         Button(action: {
                             // TODO: Like
                         }) {
-                            Image(systemName: "heart")
-                                .foregroundColor(.secondary)
+                            if !post.likedUsers.contains(FireAuth.userId()) {
+                                Image(systemName: "heart")
+                                    .foregroundColor(.secondary)
+                            } else {
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(.red)
+                            }
                         }
                         Text("\(post.likedUsers.count)")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(post.likedUsers.contains(FireAuth.userId()) ? .red : .secondary)
                             .font(.callout)
                             .padding(.leading, 4)
                     }
