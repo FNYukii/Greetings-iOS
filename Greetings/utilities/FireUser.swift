@@ -16,11 +16,11 @@ class FireUser {
             .document(id)
             .getDocument { (document, error) in
                 if let document = document, document.exists {
-                    print("HELLO! Success!")
                     let user = User(document: document)
+                    print("HELLO! Success! userId: \(id), displayName: \(user.displayName)")
                     completion?(user)
                 } else {
-                    print("HELLO! Fail! Document does not exist.")
+                    print("HELLO! Fail! Document User does not exist.")
                     completion?(nil)
                 }
             }
@@ -39,9 +39,9 @@ class FireUser {
             "followers": []
         ]) { err in
             if let err = err {
-                print("Error writing document: \(err)")
+                print("HELLO! Fail! Error writing document: \(err)")
             } else {
-                print("Document successfully written!")
+                print("HELLO! Success! Document successfully written!")
             }
         }
     }

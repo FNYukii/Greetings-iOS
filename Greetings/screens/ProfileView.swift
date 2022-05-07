@@ -12,6 +12,7 @@ struct ProfileView: View {
     let userId: String
     @State private var user: User? = nil
     
+    @State private var posts: [Post] = []
 
     var body: some View {
         
@@ -47,6 +48,12 @@ struct ProfileView: View {
                 .padding(.horizontal)
                 
                 Divider()
+                
+                ForEach(posts) { post in
+                    PostRow(post: post)
+                        .padding(.horizontal)
+                        .listRowSeparator(.hidden)
+                }
             }
         }
         
@@ -56,6 +63,9 @@ struct ProfileView: View {
                 if let user = user {
                     self.user = user
                 }
+            }
+            FirePost.read(userId: userId) { posts in
+                self.posts = posts
             }
         }
         
