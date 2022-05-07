@@ -8,9 +8,9 @@
 import Foundation
 import FirebaseAuth
 
-class CurrentUser {
+class FireAuth {
     
-    static func id() -> String {
+    static func userId() -> String {
         let user = Auth.auth().currentUser
         if let user = user {
             return user.uid
@@ -18,12 +18,20 @@ class CurrentUser {
         return ""
     }
     
-    static func email() -> String {
+    static func userEmail() -> String {
         let email = Auth.auth().currentUser?.email
         if let email = email {
             return email
         }
         return ""
+    }
+    
+    static func signUp(email: String, password: String) {
+        
+    }
+    
+    static func signIn(email: String, password: String) {
+        
     }
     
     static func signOut() {

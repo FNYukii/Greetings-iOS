@@ -10,7 +10,7 @@ import Firebase
 class FirePost {
     
     static func create(text: String) {
-        let userId = CurrentUser.id()
+        let userId = FireAuth.userId()
         let db = Firestore.firestore()
         db.collection("posts")
             .addDocument(data: [

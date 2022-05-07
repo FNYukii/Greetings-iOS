@@ -28,7 +28,7 @@ struct FirstView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         // TODO: Open profile
-                        CurrentUser.signOut()
+                        FireAuth.signOut()
                     }) {
                         Image(systemName: "person.crop.circle")
                             .font(.title2)
