@@ -35,25 +35,25 @@ struct ProfileView: View {
                                 .font(.largeTitle)
                                 .foregroundColor(.secondary)
                             VStack(alignment: .leading) {
-                                Text(user != nil ? user!.displayName : "nothing")
+                                Text(user != nil ? user!.displayName : "---")
                                     .fontWeight(.bold)
-                                Text(user != nil ? user!.userName : "nothing")
+                                Text(user != nil ? user!.userName : "---")
                                     .foregroundColor(.secondary)
                             }
                             Spacer()
                         }
                         .padding(.leading)
                         
-                        Text(user != nil ? user!.introduction : "nothing")
+                        Text(user != nil ? user!.introduction : "---")
                             .padding(.horizontal)
                             .padding(.vertical, 4)
                         
                         HStack {
-                            Text(user != nil ? "\(user!.followings.count)" : "nothing")
+                            Text(user != nil ? "\(user!.followings.count)" : "-")
                             Text("followings")
                                 .foregroundColor(.secondary)
                                 .padding(.trailing)
-                            Text(user != nil ? "\(user!.followers.count)" : "nothing")
+                            Text(user != nil ? "\(user!.followers.count)" : "-")
                             Text("followers")
                                 .foregroundColor(.secondary)
                         }
@@ -96,20 +96,26 @@ struct ProfileView: View {
         .toolbar {
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    Button(action: {
-                        
-                    }) {
-                        Label("edit", systemImage: "square.and.pencil")
+                if userId == FireAuth.userId() {
+                    Menu {
+                        Button(action: {
+                            
+                        }) {
+                            Label("edit", systemImage: "square.and.pencil")
+                        }
+                        Button(action: {
+                            FireAuth.signOut()
+                        }) {
+                            Label("sign-out", systemImage: "rectangle.portrait.and.arrow.right")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.title3)
                     }
-                    Button(action: {
-                        FireAuth.signOut()
-                    }) {
-                        Label("sign-out", systemImage: "rectangle.portrait.and.arrow.right")
+                } else {
+                    Button("follow") {
+                        // TODO: Follow
                     }
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                        .font(.title3)
                 }
             }
         }

@@ -31,11 +31,11 @@ struct PostRow: View {
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text(user != nil ? user!.displayName: "-")
+                        Text(user != nil ? user!.displayName: "---")
                             .fontWeight(.bold)
                             .lineLimit(1)
                         
-                        Text(user != nil ? "@\(user!.userName)" : "-")
+                        Text(user != nil ? "@\(user!.userName)" : "---")
                             .foregroundColor(.secondary)
                             .lineLimit(1)
                         
