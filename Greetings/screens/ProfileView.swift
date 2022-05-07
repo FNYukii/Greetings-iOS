@@ -14,7 +14,32 @@ struct ProfileView: View {
     
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            
+            HStack {
+                Image(systemName: "person.crop.circle")
+                    .font(.largeTitle)
+                VStack(alignment: .leading) {
+                    Text(user != nil ? user!.displayName : "nothing")
+                    Text(user != nil ? user!.userName : "nothing")
+                }
+                Spacer()
+            }
+            .padding(.leading)
+            
+            Text(user != nil ? user!.introduction : "nothing")
+                .padding()
+            
+            HStack {
+                Text(user != nil ? "\(user!.followings.count)" : "nothing")
+                Text("followings")
+                    .padding(.trailing)
+                Text(user != nil ? "\(user!.followers.count)" : "nothing")
+                Text("followers")
+            }
+            .padding(.horizontal)
+            
+            Spacer()
             
         }
         
