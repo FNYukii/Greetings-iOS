@@ -25,11 +25,11 @@ struct PostRow: View {
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text(user != nil ? user!.displayName: "nothing")
+                        Text(user != nil ? user!.displayName: "-")
                             .fontWeight(.bold)
                             .lineLimit(1)
                         
-                        Text(user != nil ? "@\(user!.userName)" : "nothing")
+                        Text(user != nil ? "@\(user!.userName)" : "-")
                             .foregroundColor(.secondary)
                             .lineLimit(1)
                         
@@ -80,11 +80,12 @@ struct PostRow: View {
             let userId = post.userId
             FireUser.read(id: userId) { user in
                 if let user = user {
-                    self.user = user
+                    withAnimation {
+                        self.user = user
+                    }
                 }
             }
         }
-        
     }
     
     private func HowManyAgoText(from: Date) -> Text {
