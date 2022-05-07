@@ -9,12 +9,17 @@ import SwiftUI
 
 struct FirstView: View {
     
+    @ObservedObject private var postViewModel = PostViewModel()
+    
     @State private var isShowSheet = false
     
     var body: some View {
         NavigationView {
             List {
-                
+                ForEach(postViewModel.posts) { post in
+                    PostRow(post: post)
+                        .listRowSeparator(.hidden)
+                }
             }
             .listStyle(PlainListStyle())
             
@@ -45,8 +50,8 @@ struct FirstView: View {
     }
 }
 
-struct FirstView_Previews: PreviewProvider {
-    static var previews: some View {
-        FirstView()
-    }
-}
+//struct FirstView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FirstView()
+//    }
+//}
