@@ -26,11 +26,11 @@ class FireUser {
             }
     }
     
-    static func followings() {
+    static func readFollowings() {
         
     }
     
-    static func followers(id: String, completion: (([User]) -> Void)?) {
+    static func readFollowers(id: String, completion: (([User]) -> Void)?) {
         let db = Firestore.firestore()
         db.collection("users")
             .whereField("folloings", arrayContains: id)

@@ -9,7 +9,7 @@ import Firebase
 
 class FirePost {
     
-    static func read(userId: String, completion: (([Post]) -> Void)?) {
+    static func readPosts(userId: String, completion: (([Post]) -> Void)?) {
         let db = Firestore.firestore()
         db.collection("posts")
             .whereField("userId", isEqualTo: userId)

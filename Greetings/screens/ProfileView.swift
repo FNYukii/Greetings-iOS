@@ -76,13 +76,13 @@ struct ProfileView: View {
                     }
                 }
             }
-            FirePost.read(userId: userId) { posts in
+            FirePost.readPosts(userId: userId) { posts in
                 withAnimation {
                     self.posts = posts
                     self.isPostsLoaded = true
                 }
             }
-            FireUser.followers(id: userId) { users in
+            FireUser.readFollowers(id: userId) { users in
                 withAnimation {
                     self.followers = users
                     self.isFollowersLoaded = true
