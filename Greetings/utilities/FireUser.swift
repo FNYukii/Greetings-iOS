@@ -26,6 +26,28 @@ class FireUser {
             }
     }
     
+    static func followings() {
+        
+    }
+    
+    static func followers(id: String, completion: (([User]) -> Void)?) {
+        let db = Firestore.firestore()
+        db.collection("users")
+            .whereField("folloings", arrayContains: id)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                } else {
+                    var users: [User] = []
+                    for document in querySnapshot!.documents {
+                        let user = User(document: document)
+                        users.append(user)
+                    }
+                    completion?(users)
+                }
+            }
+    }
+    
     static func create(id: String, userName: String, displayName: String, introduction: String, icon: String?) {
         let db = Firestore.firestore()
         db.collection("users")

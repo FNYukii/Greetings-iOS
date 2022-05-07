@@ -13,7 +13,7 @@ struct ProfileView: View {
     
     @State private var user: User? = nil
     @State private var posts: [Post] = []
-    @State private var followers: [String] = []
+    @State private var followers: [User] = []
     
     @State private var isUserLoaded = false
     @State private var isPostsLoaded = false
@@ -80,6 +80,12 @@ struct ProfileView: View {
                 withAnimation {
                     self.posts = posts
                     self.isPostsLoaded = true
+                }
+            }
+            FireUser.followers(id: userId) { users in
+                withAnimation {
+                    self.followers = users
+                    self.isFollowersLoaded = true
                 }
             }
         }
