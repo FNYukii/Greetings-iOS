@@ -26,8 +26,16 @@ class FireAuth {
         return ""
     }
     
-    static func signUp(email: String, password: String) {
-        
+    static func signUp(email: String, password: String, completion: ((String?) -> Void)?) {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                print("HELLO! Fail! Erroring sign up. error: \(error)")
+            }
+            if let authResult = authResult {
+                let userId = authResult.user.uid
+                completion?(userId)
+            }
+        }
     }
     
     static func signIn(email: String, password: String) {

@@ -51,7 +51,11 @@ struct SignUpView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action :{
-                        // TODO:
+                        FireAuth.signUp(email: email, password: password) { userId in
+                            if let userId = userId {
+                                FireUser.create(id: userId, userName: userName, displayName: displayName, introduction: introduction, icon: nil)
+                            }
+                        }
                         dismiss()
                     }) {
                         Text("done")
