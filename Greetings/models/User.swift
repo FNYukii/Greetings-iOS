@@ -14,7 +14,6 @@ struct User {
     let introduction: String
     let icon: String?
     let followings: [String]
-    let followers: [String]
     
     init(document: DocumentSnapshot) {
         self.id = document.documentID
@@ -23,6 +22,5 @@ struct User {
         self.introduction = document.get("introduction") as! String
         self.icon = document.get("icon") as? String
         self.followings = document.get("followings") as! [String]
-        self.followers = document.get("followers") as! [String]
     }
 }

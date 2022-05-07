@@ -13,6 +13,7 @@ struct ProfileView: View {
     
     @State private var user: User? = nil
     @State private var posts: [Post] = []
+    @State private var followers: [String] = []
     
     @State private var isUserLoaded = false
     @State private var isPostsLoaded = false
@@ -53,7 +54,7 @@ struct ProfileView: View {
                             Text("followings")
                                 .foregroundColor(.secondary)
                                 .padding(.trailing)
-                            Text(user != nil ? "\(user!.followers.count)" : "-")
+                            Text(user != nil ? "\(self.followers.count)" : "-")
                             Text("followers")
                                 .foregroundColor(.secondary)
                         }
