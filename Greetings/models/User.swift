@@ -15,7 +15,7 @@ struct User {
     let followings: [String]
     let followers: [String]
     
-    init(document: QueryDocumentSnapshot) {
+    init(document: DocumentSnapshot) {
         self.id = document.documentID
         self.userName = document.get("userName") as! String
         self.displayName = document.get("displayName") as! String

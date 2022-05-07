@@ -5,10 +5,25 @@
 //  Created by Yu on 2022/05/06.
 //
 
+import Firebase
+
 class FireUser {
     
-    static func read(id: String) {
-        
+    // idからUserを取得して返す。Userが存在しなければnilを返す。
+    static func read(id: String, completion: ((User?) -> Void)?) {
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(id)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("HELLO! Success!")
+                    let user = User(document: document)
+                    completion?(user)
+                } else {
+                    print("HELLO! Fail! Document does not exist.")
+                    completion?(nil)
+                }
+            }
     }
     
     static func create() {
