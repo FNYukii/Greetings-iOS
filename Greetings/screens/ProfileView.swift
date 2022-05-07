@@ -9,15 +9,18 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    let userId: String
+    let showUserId: String
     
-    @State private var user: User? = nil
+    @State private var showUser: User? = nil
+    @State private var currentUser: User? = nil
     @State private var posts: [Post] = []
     @State private var followers: [User] = []
     
-    @State private var isUserLoaded = false
+    @State private var isShowUserLoaded = false
+    @State private var isCurrentUserLoaded = false
     @State private var isPostsLoaded = false
     @State private var isFollowersLoaded = false
+    
 
     var body: some View {
         
@@ -29,21 +32,21 @@ struct ProfileView: View {
                         .font(.largeTitle)
                         .foregroundColor(.secondary)
                     VStack(alignment: .leading) {
-                        Text(isUserLoaded ? user!.displayName : "---")
+                        Text(isShowUserLoaded ? showUser!.displayName : "---")
                             .fontWeight(.bold)
-                        Text(isUserLoaded ? user!.userName : "---")
+                        Text(isShowUserLoaded ? showUser!.userName : "---")
                             .foregroundColor(.secondary)
                     }
                     Spacer()
                 }
                 .padding(.leading)
                 
-                Text(isUserLoaded ? user!.introduction : "---")
+                Text(isShowUserLoaded ? showUser!.introduction : "---")
                     .padding(.horizontal)
                     .padding(.vertical, 4)
                 
                 HStack {
-                    Text(isUserLoaded ? "\(user!.followings.count)" : "-")
+                    Text(isShowUserLoaded ? "\(showUser!.followings.count)" : "-")
                     Text("followings")
                         .foregroundColor(.secondary)
                         .padding(.trailing)
@@ -68,21 +71,29 @@ struct ProfileView: View {
         }
         
         .onAppear {
-            FireUser.readUser(userId: userId) { user in
+            FireUser.readUser(userId: showUserId) { user in
                 if let user = user {
                     withAnimation {
-                        self.user = user
-                        self.isUserLoaded = true
+                        self.showUser = user
+                        self.isShowUserLoaded = true
                     }
                 }
             }
-            FirePost.readPosts(userId: userId) { posts in
+            FireUser.readUser(userId: FireAuth.userId()) { user in
+                if let user = user {
+                    withAnimation {
+                        self.currentUser = user
+                        self.isCurrentUserLoaded = true
+                    }
+                }
+            }
+            FirePost.readPosts(userId: showUserId) { posts in
                 withAnimation {
                     self.posts = posts
                     self.isPostsLoaded = true
                 }
             }
-            FireUser.readFollowers(userId: userId) { users in
+            FireUser.readFollowers(userId: showUserId) { users in
                 withAnimation {
                     self.followers = users
                     self.isFollowersLoaded = true
@@ -90,30 +101,44 @@ struct ProfileView: View {
             }
         }
         
-        .navigationTitle(user != nil ? user!.displayName : "profile")
+        .navigationTitle(isShowUserLoaded ? showUser!.displayName : "profile")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                if userId == FireAuth.userId() {
+                if showUserId == FireAuth.userId() {
                     Menu {
                         Button(action: {
-                            
+                            // TODO: Edit
                         }) {
                             Label("edit", systemImage: "square.and.pencil")
                         }
+                        
                         Button(action: {
                             FireAuth.signOut()
                         }) {
                             Label("sign-out", systemImage: "rectangle.portrait.and.arrow.right")
                         }
+                        
                     } label: {
                         Image(systemName: "ellipsis.circle")
                             .font(.title3)
                     }
-                } else {
-                    Button("follow") {
-                        FireUser.followUser(userId: userId)
+                }
+                
+                if showUserId != FireAuth.userId() && !isCurrentUserLoaded {
+                    Text("---")
+                }
+                
+                if showUserId != FireAuth.userId() && isCurrentUserLoaded {
+                    if !currentUser!.followings.contains(showUserId) {
+                        Button("follow") {
+                            FireUser.followUser(userId: showUserId)
+                        }
+                    } else {
+                        Button("unfollow") {
+                            FireUser.unfollowUser(userId: showUserId)
+                        }
                     }
                 }
             }

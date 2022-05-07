@@ -77,6 +77,15 @@ class FireUser {
             ])
     }
     
+    static func unfollowUser(userId: String) {
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(FireAuth.userId())
+            .updateData([
+                "followings": FieldValue.arrayRemove([userId])
+            ])
+    }
+    
     static func deleteUser() {
         
     }

@@ -22,7 +22,7 @@ struct PostRow: View {
         VStack {
             HStack(alignment: .top) {
                 
-                NavigationLink(destination: ProfileView(userId: post.userId)) {
+                NavigationLink(destination: ProfileView(showUserId: post.userId)) {
                     Image(systemName: "person.crop.circle")
                         .font(.largeTitle)
                         .foregroundColor(.secondary)
