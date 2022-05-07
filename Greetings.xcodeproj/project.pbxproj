@@ -33,6 +33,7 @@
 		542E3456282542E100D70981 /* FireUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3455282542E100D70981 /* FireUser.swift */; };
 		542E345A282660E100D70981 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3459282660E100D70981 /* SignUpView.swift */; };
 		542E345C282660F700D70981 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E345B282660F700D70981 /* SignInView.swift */; };
+		54FECA47282683EC00C09024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA46282683EC00C09024 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		542E3455282542E100D70981 /* FireUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireUser.swift; sourceTree = "<group>"; };
 		542E3459282660E100D70981 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		542E345B282660F700D70981 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		54FECA46282683EC00C09024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				542E342C2824D92F00D70981 /* SecondView.swift */,
 				542E342E2824D93900D70981 /* ThirdView.swift */,
 				542E34322824DC9F00D70981 /* CreatePostView.swift */,
+				54FECA46282683EC00C09024 /* ProfileView.swift */,
 				542E3459282660E100D70981 /* SignUpView.swift */,
 				542E345B282660F700D70981 /* SignInView.swift */,
 			);
@@ -263,6 +266,7 @@
 				542E345228253DB900D70981 /* FirePost.swift in Sources */,
 				542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */,
 				542E342F2824D93900D70981 /* ThirdView.swift in Sources */,
+				54FECA47282683EC00C09024 /* ProfileView.swift in Sources */,
 				542E3442282531EE00D70981 /* WelcomeView.swift in Sources */,
 				542E342B2824D92600D70981 /* FirstView.swift in Sources */,
 				542E345A282660E100D70981 /* SignUpView.swift in Sources */,

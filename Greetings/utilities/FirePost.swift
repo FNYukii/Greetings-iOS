@@ -9,6 +9,25 @@ import Firebase
 
 class FirePost {
     
+    static func read(userId: String, completion: (([Post]) -> Void)?) {
+        let db = Firestore.firestore()
+        db.collection("posts")
+            .whereField("userId", isEqualTo: userId)
+            .order(by: "createdAt", descending: true)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                } else {
+                    var posts: [Post] = []
+                    for document in querySnapshot!.documents {
+                        let post = Post(document: document)
+                        posts.append(post)
+                    }
+                    completion?(posts)
+                }
+        }
+    }
+    
     static func create(text: String) {
         let userId = FireAuth.userId()
         let db = Firestore.firestore()
