@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CreateView: View {
+struct CreatePostView: View {
     
     @Environment(\.dismiss) private var dismiss
     
@@ -44,6 +44,6 @@ struct CreateView: View {
 
 struct CreateView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateView()
+        CreatePostView()
     }
 }
