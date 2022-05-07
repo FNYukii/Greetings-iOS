@@ -24,7 +24,6 @@ struct CreatePostView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("cancel") {
-                        // TODO: Go back
                         dismiss()
                     }
                 }
