@@ -33,6 +33,7 @@ struct ProfileView: View {
                         HStack {
                             Image(systemName: "person.crop.circle")
                                 .font(.largeTitle)
+                                .foregroundColor(.secondary)
                             VStack(alignment: .leading) {
                                 Text(user != nil ? user!.displayName : "nothing")
                                     .fontWeight(.bold)

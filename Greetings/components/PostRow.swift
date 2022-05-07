@@ -21,6 +21,7 @@ struct PostRow: View {
             HStack(alignment: .top) {
                 Image(systemName: "person.crop.circle")
                     .font(.largeTitle)
+                    .foregroundColor(.secondary)
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         Text(user != nil ? user!.displayName: "deleted")
