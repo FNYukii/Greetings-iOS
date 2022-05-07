@@ -11,7 +11,9 @@ struct PostRow: View {
     
     private let post: Post
     private let isNavLinkDisable: Bool
-    @State private var user: User? = nil
+    
+    @State private var postUser: User? = nil
+    @State private var isPostUserLoaded = false
     
     init(post: Post, isNavLinkDisable: Bool = false) {
         self.post = post
@@ -31,11 +33,11 @@ struct PostRow: View {
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text(user != nil ? user!.displayName: "---")
+                        Text(isPostUserLoaded ? postUser!.displayName: "---")
                             .fontWeight(.bold)
                             .lineLimit(1)
                         
-                        Text(user != nil ? "@\(user!.userName)" : "---")
+                        Text(isPostUserLoaded ? "@\(postUser!.userName)" : "---")
                             .foregroundColor(.secondary)
                             .lineLimit(1)
                         
@@ -55,17 +57,17 @@ struct PostRow: View {
                                 Button(action: {
                                     // TODO: Follow
                                 }) {
-                                    Label("follow \(post.userId)", systemImage: "person.fill.badge.plus")
+                                    Label("follow \(isPostUserLoaded ? postUser!.userName: "---")", systemImage: "person.fill.badge.plus")
                                 }
                                 Button(action: {
                                     // TODO: Mute
                                 }) {
-                                    Label("Mute \(post.userId)", systemImage: "speaker.slash")
+                                    Label("mute \(isPostUserLoaded ? postUser!.userName: "---")", systemImage: "speaker.slash")
                                 }
                                 Button(action: {
                                     // TODO: Block
                                 }) {
-                                    Label("Block \(post.userId)", systemImage: "nosign")
+                                    Label("block \(isPostUserLoaded ? postUser!.userName: "---")", systemImage: "nosign")
                                 }
                             }
                         } label : {
@@ -112,7 +114,8 @@ struct PostRow: View {
             FireUser.readUser(userId: userId) { user in
                 if let user = user {
                     withAnimation {
-                        self.user = user
+                        self.postUser = user
+                        self.isPostUserLoaded = true
                     }
                 }
             }
