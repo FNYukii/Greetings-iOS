@@ -31,10 +31,7 @@ struct FirstView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        // TODO: Open profile
-                        FireAuth.signOut()
-                    }) {
+                    NavigationLink(destination: ProfileView(userId: FireAuth.userId())) {
                         Image(systemName: "person.crop.circle")
                             .font(.title2)
                     }
