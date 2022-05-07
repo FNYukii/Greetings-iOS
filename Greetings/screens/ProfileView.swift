@@ -71,7 +71,7 @@ struct ProfileView: View {
                 
                 if isPostsLoaded {
                     ForEach(posts) { post in
-                        PostRow(post: post)
+                        PostRow(post: post, isNavLinkDisable: true)
                             .listRowSeparator(.hidden)
                     }
                 }

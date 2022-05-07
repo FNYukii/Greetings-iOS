@@ -10,19 +10,24 @@ import SwiftUI
 struct PostRow: View {
     
     private let post: Post
+    private let isNavLinkDisable: Bool
     @State private var user: User? = nil
     
-    init(post: Post) {
+    init(post: Post, isNavLinkDisable: Bool = false) {
         self.post = post
+        self.isNavLinkDisable = isNavLinkDisable
     }
     
     var body: some View {
         VStack {
             HStack(alignment: .top) {
                 
-                Image(systemName: "person.crop.circle")
-                    .font(.largeTitle)
-                    .foregroundColor(.secondary)
+                NavigationLink(destination: ProfileView(userId: post.userId)) {
+                    Image(systemName: "person.crop.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.secondary)
+                }
+                .disabled(isNavLinkDisable)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
