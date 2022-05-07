@@ -70,41 +70,11 @@ struct ProfileView: View {
             }
         }
         
-        .onAppear {
-            FireUser.readUser(userId: showUserId) { user in
-                if let user = user {
-                    withAnimation {
-                        self.showUser = user
-                        self.isShowUserLoaded = true
-                    }
-                }
-            }
-            FireUser.readUser(userId: FireAuth.userId()) { user in
-                if let user = user {
-                    withAnimation {
-                        self.currentUser = user
-                        self.isCurrentUserLoaded = true
-                    }
-                }
-            }
-            FirePost.readPosts(userId: showUserId) { posts in
-                withAnimation {
-                    self.posts = posts
-                    self.isPostsLoaded = true
-                }
-            }
-            FireUser.readFollowers(userId: showUserId) { users in
-                withAnimation {
-                    self.followers = users
-                    self.isFollowersLoaded = true
-                }
-            }
-        }
+        .onAppear(perform: load)
         
         .navigationTitle(isShowUserLoaded ? showUser!.displayName : "profile")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            
             ToolbarItem(placement: .navigationBarTrailing) {
                 if showUserId == FireAuth.userId() {
                     Menu {
@@ -134,13 +104,46 @@ struct ProfileView: View {
                     if !currentUser!.followings.contains(showUserId) {
                         Button("follow") {
                             FireUser.followUser(userId: showUserId)
+                            load()
                         }
                     } else {
                         Button("unfollow") {
                             FireUser.unfollowUser(userId: showUserId)
+                            load()
                         }
                     }
                 }
+            }
+        }
+    }
+    
+    private func load() {
+        FireUser.readUser(userId: showUserId) { user in
+            if let user = user {
+                withAnimation {
+                    self.showUser = user
+                    self.isShowUserLoaded = true
+                }
+            }
+        }
+        FireUser.readUser(userId: FireAuth.userId()) { user in
+            if let user = user {
+                withAnimation {
+                    self.currentUser = user
+                    self.isCurrentUserLoaded = true
+                }
+            }
+        }
+        FirePost.readPosts(userId: showUserId) { posts in
+            withAnimation {
+                self.posts = posts
+                self.isPostsLoaded = true
+            }
+        }
+        FireUser.readFollowers(userId: showUserId) { users in
+            withAnimation {
+                self.followers = users
+                self.isFollowersLoaded = true
             }
         }
     }
