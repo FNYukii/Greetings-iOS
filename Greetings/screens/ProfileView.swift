@@ -14,40 +14,42 @@ struct ProfileView: View {
     
 
     var body: some View {
-        VStack(alignment: .leading) {
-            
-            HStack {
-                Image(systemName: "person.crop.circle")
-                    .font(.largeTitle)
-                VStack(alignment: .leading) {
-                    Text(user != nil ? user!.displayName : "nothing")
-                    Text(user != nil ? user!.userName : "nothing")
+        
+        ScrollView {
+            VStack(alignment: .leading) {
+                
+                HStack {
+                    Image(systemName: "person.crop.circle")
+                        .font(.largeTitle)
+                    VStack(alignment: .leading) {
+                        Text(user != nil ? user!.displayName : "nothing")
+                            .fontWeight(.bold)
+                        Text(user != nil ? user!.userName : "nothing")
+                            .foregroundColor(.secondary)
+                    }
+                    Spacer()
+                }
+                .padding(.leading)
+                
+                Text(user != nil ? user!.introduction : "nothing")
+                    .padding(.horizontal)
+                    .padding(.vertical, 4)
+                
+                HStack {
+                    Text(user != nil ? "\(user!.followings.count)" : "nothing")
+                    Text("followings")
+                        .foregroundColor(.secondary)
+                        .padding(.trailing)
+                    Text(user != nil ? "\(user!.followers.count)" : "nothing")
+                    Text("followers")
                         .foregroundColor(.secondary)
                 }
-                Spacer()
-            }
-            .padding(.leading)
-            
-            Text(user != nil ? user!.introduction : "nothing")
                 .padding(.horizontal)
-                .padding(.vertical, 4)
-            
-            HStack {
-                Text(user != nil ? "\(user!.followings.count)" : "nothing")
-                Text("followings")
-                    .foregroundColor(.secondary)
-                    .padding(.trailing)
-                Text(user != nil ? "\(user!.followers.count)" : "nothing")
-                Text("followers")
-                    .foregroundColor(.secondary)
+                
+                Divider()
             }
-            .padding(.horizontal)
-            
-            Divider()
-            
-            Spacer()
-            
         }
+        
         
         .onAppear {
             FireUser.read(id: userId) { user in
@@ -57,7 +59,7 @@ struct ProfileView: View {
             }
         }
         
-        .navigationTitle("profile")
+        .navigationTitle(user != nil ? user!.displayName : "profile")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             
