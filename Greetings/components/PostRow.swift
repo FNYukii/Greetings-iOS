@@ -9,9 +9,12 @@ import SwiftUI
 
 struct PostRow: View {
     
-    let displayName: String
-    let userName: String
-    let content: String
+    private let post: Post
+    @State private var user: User? = nil
+    
+    init(post: Post) {
+        self.post = post
+    }
     
     var body: some View {
         VStack {
@@ -20,10 +23,10 @@ struct PostRow: View {
                     .font(.largeTitle)
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text(displayName)
+                        Text(user != nil ? user!.displayName: "deleted")
                             .fontWeight(.bold)
                             .lineLimit(1)
-                        Text("@\(userName)")
+                        Text(user != nil ? "@\(user!.userName)" : "deleted")
                             .foregroundColor(.secondary)
                             .lineLimit(1)
                         Text("12時間前")
@@ -36,16 +39,26 @@ struct PostRow: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                    Text(content)
+                    Text(post.text)
                 }
             }
             Divider()
         }
+        
+        .onAppear {
+            let userId = post.userId
+            FireUser.read(id: userId) { user in
+                if let user = user {
+                    self.user = user
+                }
+            }
+        }
+        
     }
 }
 
-struct PostRow_Previews: PreviewProvider {
-    static var previews: some View {
-        PostRow(displayName: "りんご好き", userName: "appler234222", content: "有馬温泉に旅行行ってきたよ。温泉めっちゃ気持ちよかった。")
-    }
-}
+//struct PostRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PostRow()
+//    }
+//}

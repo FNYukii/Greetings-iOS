@@ -14,9 +14,9 @@ struct FirstView: View {
     var body: some View {
         NavigationView {
             List {
-                PostRow(displayName: "太郎", userName: "Taro123", content: "今日は一日中休めるぞ")
+                PostRow(displayName: "太郎", userName: "Taro123", text: "今日は一日中休めるぞ")
                     .listRowSeparator(.hidden)
-                PostRow(displayName: "ひかり", userName: "Hikarin14", content: "明日はお出かけする予定")
+                PostRow(displayName: "ひかり", userName: "Hikarin14", text: "明日はお出かけする予定")
                     .listRowSeparator(.hidden)
             }
             .listStyle(PlainListStyle())
