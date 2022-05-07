@@ -47,8 +47,22 @@ class FirePost {
             }
     }
     
-    static func update() {
-        // TODO: Update post
+    static func like(id: String) {
+        let db = Firestore.firestore()
+        db.collection("posts")
+            .document(id)
+            .updateData([
+                "likedUsers": FieldValue.arrayUnion([FireAuth.userId()])
+            ])
+    }
+    
+    static func unlike(id: String) {
+        let db = Firestore.firestore()
+        db.collection("posts")
+            .document(id)
+            .updateData([
+                "likedUsers": FieldValue.arrayRemove([FireAuth.userId()])
+            ])
     }
     
     static func delete(id: String) {

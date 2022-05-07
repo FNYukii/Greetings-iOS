@@ -75,7 +75,11 @@ struct PostRow: View {
                     
                     HStack(spacing: 0) {
                         Button(action: {
-                            // TODO: Like
+                            if !post.likedUsers.contains(FireAuth.userId()) {
+                                FirePost.like(id: post.id)
+                            } else {
+                                FirePost.unlike(id: post.id)
+                            }
                         }) {
                             if !post.likedUsers.contains(FireAuth.userId()) {
                                 Image(systemName: "heart")
@@ -85,6 +89,7 @@ struct PostRow: View {
                                     .foregroundColor(.red)
                             }
                         }
+                        
                         Text("\(post.likedUsers.count)")
                             .foregroundColor(post.likedUsers.contains(FireAuth.userId()) ? .red : .secondary)
                             .font(.callout)
