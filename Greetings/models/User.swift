@@ -11,6 +11,7 @@ struct User {
     let id: String
     let userName: String
     let displayName: String
+    let introduction: String
     let icon: String
     let followings: [String]
     let followers: [String]
@@ -19,6 +20,7 @@ struct User {
         self.id = document.documentID
         self.userName = document.get("userName") as! String
         self.displayName = document.get("displayName") as! String
+        self.introduction = document.get("introduction") as! String
         self.icon = document.get("icon") as! String
         self.followings = document.get("followings") as! [String]
         self.followers = document.get("followers") as! [String]

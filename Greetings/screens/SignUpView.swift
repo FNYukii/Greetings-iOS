@@ -8,8 +8,58 @@
 import SwiftUI
 
 struct SignUpView: View {
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    @State private var email = ""
+    @State private var password = ""
+    
+    @State private var userName = ""
+    @State private var displayName = ""
+    @State private var introduction = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Form {
+                
+                Section {
+                    TextField("email", text: $email)
+                    TextField("password", text: $password)
+                }
+                Section {
+                    TextField("user-name", text: $userName)
+                    TextField("display-name", text: $displayName)
+                    ZStack(alignment: .topLeading) {
+                        TextEditor(text: $introduction)
+                            .frame(minHeight: 80)
+                        Text("introduction")
+                            .foregroundColor(Color(UIColor.placeholderText))
+                            .opacity(introduction.isEmpty ? 1 : 0)
+                            .padding(.top, 8)
+                            .padding(.leading, 5)
+                    }
+                }
+            }
+            
+            .navigationTitle("sign-up")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("cancel") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action :{
+                        // TODO:
+                        dismiss()
+                    }) {
+                        Text("done")
+                    }
+                }
+            }
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

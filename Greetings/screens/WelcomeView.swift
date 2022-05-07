@@ -15,10 +15,10 @@ struct WelcomeView: View {
     var body: some View {
         VStack {
             Button("sign-up") {
-                isShowSignInSheet.toggle()
+                isShowSignUpSheet.toggle()
             }
             Button("sign-in") {
-                isShowSignUpSheet.toggle()
+                isShowSignInSheet.toggle()
             }
         }
         

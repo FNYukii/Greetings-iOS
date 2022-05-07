@@ -26,13 +26,14 @@ class FireUser {
             }
     }
     
-    static func create(id: String, userName: String, displayName: String, icon: String?) {
+    static func create(id: String, userName: String, displayName: String, introduction: String, icon: String?) {
         let db = Firestore.firestore()
         db.collection("users")
             .document(id)
             .setData([
             "userName": userName,
             "displayName": displayName,
+            "introduction": introduction,
             "icon": icon as Any,
             "followings": [],
             "followers": []
