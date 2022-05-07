@@ -113,7 +113,7 @@ struct ProfileView: View {
                     }
                 } else {
                     Button("follow") {
-                        // TODO: Follow
+                        FireUser.follow(userId: userId)
                     }
                 }
             }

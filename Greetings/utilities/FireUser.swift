@@ -68,8 +68,13 @@ class FireUser {
         }
     }
     
-    static func update() {
-        
+    static func follow(userId: String) {
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(FireAuth.userId())
+            .updateData([
+                "followings": FieldValue.arrayUnion([userId])
+            ])
     }
     
     static func delete() {
