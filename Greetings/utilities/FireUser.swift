@@ -26,8 +26,23 @@ class FireUser {
             }
     }
     
-    static func create() {
-        
+    static func create(id: String, userName: String, displayName: String, icon: String?) {
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(id)
+            .setData([
+            "userName": userName,
+            "displayName": displayName,
+            "icon": icon as Any,
+            "followings": [],
+            "followers": []
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
     }
     
     static func update() {
