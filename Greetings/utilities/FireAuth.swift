@@ -39,14 +39,20 @@ class FireAuth {
     }
     
     static func signIn(email: String, password: String) {
-        
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                print("HELLO! Fail! Erroring sign in. error: \(error)")
+            }
+        }
     }
     
     static func signOut() {
+        let firebaseAuth = Auth.auth()
         do {
-            try Auth.auth().signOut()
-        } catch {
-            print("HELLO! Fail! Error signing out")
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
         }
+      
     }
 }

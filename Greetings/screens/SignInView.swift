@@ -11,10 +11,14 @@ struct SignInView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @State private var email = ""
+    @State private var password = ""
+    
     var body: some View {
         NavigationView {
             Form {
-                
+                TextField("email", text: $email)
+                TextField("password", text: $password)
             }
             
             .navigationTitle("sign-in")
@@ -27,7 +31,7 @@ struct SignInView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action :{
-                        // TODO: 
+                        FireAuth.signIn(email: email, password: password)
                         dismiss()
                     }) {
                         Text("done")

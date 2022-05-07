@@ -18,6 +18,8 @@ class SignInStateViewModel: ObservableObject {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 self.isSignedIn = true
+            } else {
+                self.isSignedIn = false
             }
             self.isLoaded = true
         }
