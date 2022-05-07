@@ -45,6 +45,7 @@ struct PostRow: View {
             }
             Divider()
         }
+        .padding(.horizontal)
         
         .onAppear {
             let userId = post.userId

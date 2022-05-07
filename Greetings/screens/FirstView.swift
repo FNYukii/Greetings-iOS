@@ -15,13 +15,13 @@ struct FirstView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(postViewModel.posts) { post in
-                    PostRow(post: post)
-                        .listRowSeparator(.hidden)
+            ScrollView {
+                VStack {
+                    ForEach(postViewModel.posts) { post in
+                        PostRow(post: post)
+                    }
                 }
             }
-            .listStyle(PlainListStyle())
             
             .sheet(isPresented: $isShowSheet) {
                 CreatePostView()

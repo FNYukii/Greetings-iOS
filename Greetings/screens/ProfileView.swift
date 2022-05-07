@@ -72,7 +72,6 @@ struct ProfileView: View {
                 if isPostsLoaded {
                     ForEach(posts) { post in
                         PostRow(post: post)
-                            .padding(.horizontal)
                             .listRowSeparator(.hidden)
                     }
                 }
