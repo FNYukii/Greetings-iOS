@@ -5,8 +5,8 @@
 //  Created by Yu on 2022/05/06.
 //
 
-import Foundation
 import Firebase
+import SwiftUI
 
 class PostViewModel: ObservableObject {
     
@@ -29,8 +29,11 @@ class PostViewModel: ObservableObject {
                     let post = Post(document: document)
                     newPosts.append(post)
                 }
-                self.posts = newPosts
-                self.isLoaded = true
+                
+                withAnimation {
+                    self.posts = newPosts
+                    self.isLoaded = true
+                }
             }
     }
     

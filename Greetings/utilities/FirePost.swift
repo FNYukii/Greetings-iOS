@@ -47,11 +47,35 @@ class FirePost {
             }
     }
     
-    static func update() {
-        // TODO: Update post
+    static func like(id: String) {
+        let db = Firestore.firestore()
+        db.collection("posts")
+            .document(id)
+            .updateData([
+                "likedUsers": FieldValue.arrayUnion([FireAuth.userId()])
+            ])
     }
     
-    static func delete() {
+    static func unlike(id: String) {
+        let db = Firestore.firestore()
+        db.collection("posts")
+            .document(id)
+            .updateData([
+                "likedUsers": FieldValue.arrayRemove([FireAuth.userId()])
+            ])
+    }
+    
+    static func delete(id: String) {
         // TODO: Delete post
+        let db = Firestore.firestore()
+        db.collection("posts")
+            .document(id)
+            .delete() { err in
+            if let err = err {
+                print("HELLO! Fail! Error removing document: \(err)")
+            } else {
+                print("HELLO! Success! Document Post successfully removed!")
+            }
+        }
     }
 }
