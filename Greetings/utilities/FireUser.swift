@@ -33,7 +33,7 @@ class FireUser {
     static func readFollowers(userId: String, completion: (([User]) -> Void)?) {
         let db = Firestore.firestore()
         db.collection("users")
-            .whereField("folloings", arrayContains: userId)
+            .whereField("followings", arrayContains: userId)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("HELLO! Fail! Error getting documents: \(err)")
