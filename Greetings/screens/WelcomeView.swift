@@ -9,15 +9,24 @@ import SwiftUI
 
 struct WelcomeView: View {
     
-    @State private var isShowSheet = false
+    @State private var isShowSignUpSheet = false
+    @State private var isShowSignInSheet = false
     
     var body: some View {
-        Button("sign-in") {
-            isShowSheet.toggle()
+        VStack {
+            Button("sign-up") {
+                isShowSignUpSheet.toggle()
+            }
+            Button("sign-in") {
+                isShowSignInSheet.toggle()
+            }
         }
         
-        .sheet(isPresented: $isShowSheet) {
-            FirebaseAuthView()
+        .sheet(isPresented: $isShowSignUpSheet) {
+            SignUpView()
+        }
+        .sheet(isPresented: $isShowSignInSheet) {
+            SignInView()
         }
     }
 }

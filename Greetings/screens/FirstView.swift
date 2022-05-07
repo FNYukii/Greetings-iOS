@@ -9,20 +9,22 @@ import SwiftUI
 
 struct FirstView: View {
     
+    @ObservedObject private var postViewModel = PostViewModel()
+    
     @State private var isShowSheet = false
     
     var body: some View {
         NavigationView {
             List {
-                PostRow(displayName: "太郎", userName: "Taro123", content: "今日は一日中休めるぞ")
-                    .listRowSeparator(.hidden)
-                PostRow(displayName: "ひかり", userName: "Hikarin14", content: "明日はお出かけする予定")
-                    .listRowSeparator(.hidden)
+                ForEach(postViewModel.posts) { post in
+                    PostRow(post: post)
+                        .listRowSeparator(.hidden)
+                }
             }
             .listStyle(PlainListStyle())
             
             .sheet(isPresented: $isShowSheet) {
-                CreateView()
+                CreatePostView()
             }
             
             .navigationTitle("home")
@@ -31,6 +33,7 @@ struct FirstView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         // TODO: Open profile
+                        FireAuth.signOut()
                     }) {
                         Image(systemName: "person.crop.circle")
                             .font(.title2)
@@ -47,8 +50,8 @@ struct FirstView: View {
     }
 }
 
-struct FirstView_Previews: PreviewProvider {
-    static var previews: some View {
-        FirstView()
-    }
-}
+//struct FirstView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FirstView()
+//    }
+//}
