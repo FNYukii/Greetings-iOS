@@ -10,7 +10,6 @@ import FirebaseAuth
 class SignInStateViewModel: ObservableObject {
     
     @Published var isSignedIn: Bool = false
-    @Published var isUserExist: Bool = false
     @Published var isLoaded = false
     
     private var handle: AuthStateDidChangeListenerHandle!
@@ -19,18 +18,8 @@ class SignInStateViewModel: ObservableObject {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 self.isSignedIn = true
-                FireUser.read(id: user!.uid) { user in
-                    if user != nil {
-                        self.isUserExist = true
-                    }
-                    self.isLoaded = true
-                }
             }
-            
-            if user == nil {
-                self.isSignedIn = false
-                self.isLoaded = true
-            }
+            self.isLoaded = true
         }
     }
     

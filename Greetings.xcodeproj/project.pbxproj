@@ -23,7 +23,6 @@
 		542E343E28252EE300D70981 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 542E343D28252EE300D70981 /* FirebaseStorage */; };
 		542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E343F282531CE00D70981 /* SignInStateViewModel.swift */; };
 		542E3442282531EE00D70981 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3441282531EE00D70981 /* WelcomeView.swift */; };
-		542E3444282533DD00D70981 /* FirebaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3443282533DD00D70981 /* FirebaseAuthView.swift */; };
 		542E3447282534A600D70981 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 542E3446282534A600D70981 /* FirebaseAuthUI */; };
 		542E3449282534A600D70981 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 542E3448282534A600D70981 /* FirebaseGoogleAuthUI */; };
 		542E344C2825361D00D70981 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E344B2825361D00D70981 /* CurrentUser.swift */; };
@@ -32,6 +31,8 @@
 		542E345228253DB900D70981 /* FirePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E345128253DB900D70981 /* FirePost.swift */; };
 		542E34542825414A00D70981 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E34532825414A00D70981 /* PostViewModel.swift */; };
 		542E3456282542E100D70981 /* FireUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3455282542E100D70981 /* FireUser.swift */; };
+		542E345A282660E100D70981 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3459282660E100D70981 /* SignUpView.swift */; };
+		542E345C282660F700D70981 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E345B282660F700D70981 /* SignInView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +50,6 @@
 		542E34362825239500D70981 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		542E343F282531CE00D70981 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
 		542E3441282531EE00D70981 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
-		542E3443282533DD00D70981 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 		542E344A2825356E00D70981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		542E344B2825361D00D70981 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		542E344D28253A1F00D70981 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -57,6 +57,8 @@
 		542E345128253DB900D70981 /* FirePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePost.swift; sourceTree = "<group>"; };
 		542E34532825414A00D70981 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		542E3455282542E100D70981 /* FireUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireUser.swift; sourceTree = "<group>"; };
+		542E3459282660E100D70981 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		542E345B282660F700D70981 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +128,8 @@
 				542E342C2824D92F00D70981 /* SecondView.swift */,
 				542E342E2824D93900D70981 /* ThirdView.swift */,
 				542E34322824DC9F00D70981 /* CreatePostView.swift */,
-				542E3443282533DD00D70981 /* FirebaseAuthView.swift */,
+				542E3459282660E100D70981 /* SignUpView.swift */,
+				542E345B282660F700D70981 /* SignInView.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542E345C282660F700D70981 /* SignInView.swift in Sources */,
 				542E34542825414A00D70981 /* PostViewModel.swift in Sources */,
 				542E345028253BE900D70981 /* User.swift in Sources */,
 				542E34182824D43800D70981 /* ContentView.swift in Sources */,
@@ -258,10 +262,10 @@
 				542E344E28253A1F00D70981 /* Post.swift in Sources */,
 				542E345228253DB900D70981 /* FirePost.swift in Sources */,
 				542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */,
-				542E3444282533DD00D70981 /* FirebaseAuthView.swift in Sources */,
 				542E342F2824D93900D70981 /* ThirdView.swift in Sources */,
 				542E3442282531EE00D70981 /* WelcomeView.swift in Sources */,
 				542E342B2824D92600D70981 /* FirstView.swift in Sources */,
+				542E345A282660E100D70981 /* SignUpView.swift in Sources */,
 				542E342D2824D92F00D70981 /* SecondView.swift in Sources */,
 				542E34332824DC9F00D70981 /* CreatePostView.swift in Sources */,
 				542E3456282542E100D70981 /* FireUser.swift in Sources */,
