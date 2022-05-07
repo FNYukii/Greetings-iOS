@@ -22,23 +22,52 @@ struct PostRow: View {
                 Image(systemName: "person.crop.circle")
                     .font(.largeTitle)
                     .foregroundColor(.secondary)
+                
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         Text(user != nil ? user!.displayName: "deleted")
                             .fontWeight(.bold)
                             .lineLimit(1)
+                        
                         Text(user != nil ? "@\(user!.userName)" : "deleted")
                             .foregroundColor(.secondary)
                             .lineLimit(1)
+                        
                         Text("12時間前")
                             .foregroundColor(.secondary)
+                        
                         Spacer()
-                        Button(action: {
-                            // Open menu
-                        }) {
+                        
+                        Menu {
+                            if post.userId == FireAuth.userId() {
+                                Button(role: .destructive){
+                                    // TODO: Delete
+                                } label: {
+                                    Label("delete-post", systemImage: "trash")
+                                }
+                            } else {
+                                Button(action: {
+                                    // TODO: Follow
+                                }) {
+                                    Label("follow \(post.userId)", systemImage: "person.fill.badge.plus")
+                                }
+                                Button(action: {
+                                    // TODO: Mute
+                                }) {
+                                    Label("Mute \(post.userId)", systemImage: "speaker.slash")
+                                }
+                                Button(action: {
+                                    // TODO: Block
+                                }) {
+                                    Label("Block \(post.userId)", systemImage: "nosign")
+                                }
+                            }
+                        } label : {
                             Image(systemName: "ellipsis")
                                 .foregroundColor(.secondary)
+                                .padding(.vertical, 4)
                         }
+                        
                     }
                     Text(post.text)
                 }
