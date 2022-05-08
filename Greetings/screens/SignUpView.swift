@@ -29,15 +29,7 @@ struct SignUpView: View {
                 Section {
                     TextField("user-name", text: $userName)
                     TextField("display-name", text: $displayName)
-                    ZStack(alignment: .topLeading) {
-                        TextEditor(text: $introduction)
-                            .frame(minHeight: 80)
-                        Text("introduction")
-                            .foregroundColor(Color(UIColor.placeholderText))
-                            .opacity(introduction.isEmpty ? 1 : 0)
-                            .padding(.top, 8)
-                            .padding(.leading, 5)
-                    }
+                    MyTextEditor(hint: "introduction", text: $introduction)
                 }
             }
             

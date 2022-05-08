@@ -11,10 +11,16 @@ struct EditProfileView: View {
     
     @Environment(\.dismiss) private var dismiss
 
+    @State private var userName = ""
+    @State private var displayName = ""
+    @State private var introduction = ""
+    
     var body: some View {
         NavigationView {
             Form {
-                
+                TextField("user-name", text: $userName)
+                TextField("display-name", text: $displayName)
+                MyTextEditor(hint: "introduction", text: $introduction)
             }
             
             .navigationTitle("edit-profile")
