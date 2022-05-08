@@ -21,15 +21,15 @@ class PostsForFeedViewModel: ObservableObject {
             .addSnapshotListener { documentSnapshot, error in
                 
                 guard let document = documentSnapshot else {
-                    print("Error fetching document: \(error!)")
+                    print("HELLO! Fail! Error fetching User. Error: \(error!)")
                     return
                 }
-                guard let data = document.data() else {
-                    print("Document data was empty.")
+                guard let _ = document.data() else {
+                    print("HELLO! Fail! Document data was empty.")
                     return
                 }
                 
-                print("Current data: \(data)")
+                print("HELLO! Success! Read User. Size: 1")
                 let user = User(documentSnapshot: document)
                 
                 var followingIds = user.followings
@@ -43,10 +43,10 @@ class PostsForFeedViewModel: ObservableObject {
                     .order(by: "createdAt", descending: true)
                     .addSnapshotListener {(snapshot, error) in
                         guard let snapshot = snapshot else {
-                            print("HELLO! Fail! Error fetching snapshots: \(error!)")
+                            print("HELLO! Fail! Error reading Posts posted by \(userId). Error: \(error!)")
                             return
                         }
-                        print("HELLO! Success! Read Posts. Size: \(snapshot.documents.count)")
+                        print("HELLO! Success! Read Posts posted by \(followingIds). Size: \(snapshot.documents.count)")
                         
                         var newPosts: [Post] = []
                         snapshot.documents.forEach { document in
@@ -59,8 +59,6 @@ class PostsForFeedViewModel: ObservableObject {
                             self.isLoaded = true
                         }
                     }
-                
-                
             }
     }
     

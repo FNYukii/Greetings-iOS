@@ -16,10 +16,10 @@ class FirePost {
             .getDocument { (document, error) in
                 if let document = document, document.exists {
                     let post = Post(documentSnapshot: document)
-                    print("HELLO! Success! Read a post")
+                    print("HELLO! Success! Read Post identified as \(postId). Size: 1")
                     completion?(post)
                 } else {
-                    print("HELLO! Fail! The post does not exist.")
+                    print("HELLO! Fail! Post identified as \(postId) does not exist.")
                     completion?(nil)
                 }
             }
@@ -32,8 +32,9 @@ class FirePost {
             .order(by: "createdAt", descending: true)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
+                    print("HELLO! Fail! Error reading Posts posted by \(userId). Error: \(err)")
                 } else {
+                    print("HELLO! Success! Read Posts posted by \(userId). Size: \(querySnapshot!.documents.count)")
                     var posts: [Post] = []
                     for document in querySnapshot!.documents {
                         let post = Post(documentSnapshot: document)
@@ -56,9 +57,9 @@ class FirePost {
                 "likedUsers": []
             ]) { error in
                 if let error = error {
-                    print("HELLO! Fail! Error adding new Post: \(error)")
+                    print("HELLO! Fail! Error adding new Post. Error: \(error)")
                 } else {
-                    print("HELLO! Success! Added Post")
+                    print("HELLO! Success! Added new Post.")
                 }
             }
     }
@@ -69,7 +70,13 @@ class FirePost {
             .document(postId)
             .updateData([
                 "likedUsers": FieldValue.arrayUnion([FireAuth.userId()])
-            ])
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating Post. Error: \(err)")
+                } else {
+                    print("HELLO! Success! Post successfully updated.")
+                }
+            }
     }
     
     static func unlikePost(postId: String) {
@@ -78,7 +85,13 @@ class FirePost {
             .document(postId)
             .updateData([
                 "likedUsers": FieldValue.arrayRemove([FireAuth.userId()])
-            ])
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating Post. Error: \(err)")
+                } else {
+                    print("HELLO! Success! Post successfully updated.")
+                }
+            }
     }
     
     static func deletePost(postId: String) {
@@ -88,9 +101,9 @@ class FirePost {
             .document(postId)
             .delete() { err in
             if let err = err {
-                print("HELLO! Fail! Error removing document: \(err)")
+                print("HELLO! Fail! Error removing Post. Error: \(err)")
             } else {
-                print("HELLO! Success! Document Post successfully removed!")
+                print("HELLO! Success! Post successfully removed!")
             }
         }
     }

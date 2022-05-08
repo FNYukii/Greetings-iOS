@@ -20,7 +20,7 @@ class PostsByUserViewModel: ObservableObject {
             .order(by: "createdAt", descending: true)
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
-                    print("HELLO! Fail! Error reading Posts posted by \(userId): \(error!)")
+                    print("HELLO! Fail! Error reading Posts posted by \(userId). Erorr: \(error!)")
                     return
                 }
                 print("HELLO! Success! Read Posts posted by \(userId). Size: \(snapshot.documents.count)")
