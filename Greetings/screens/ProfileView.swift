@@ -31,43 +31,7 @@ struct ProfileView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 
-                HStack {
-                    Image(systemName: "person.crop.circle")
-                        .font(.largeTitle)
-                        .foregroundColor(.secondary)
-                    VStack(alignment: .leading) {
-                        Text(isShowUserLoaded ? showUser!.displayName : "---")
-                            .fontWeight(.bold)
-                        Text(isShowUserLoaded ? showUser!.userName : "---")
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                }
-                .padding(.leading)
-                
-                Text(isShowUserLoaded ? showUser!.introduction : "---")
-                    .padding(.horizontal)
-                    .padding(.vertical, 4)
-                
-                HStack {
-                    NavigationLink(destination: FollowingsView(showUserId: showUserId)) {
-                        Text(isShowUserLoaded ? "\(showUser!.followings.count)" : "-")
-                            .foregroundColor(.primary)
-                        Text("followings")
-                            .foregroundColor(.secondary)
-                    }
-                    .padding(.trailing)
-                    
-                    NavigationLink(destination: FollowersView(showUserId: showUserId)) {
-                        Text(isFollowersLoaded ? "\(self.followers.count)" : "-")
-                            .foregroundColor(.primary)
-                        Text("followers")
-                            .foregroundColor(.secondary)
-                    }
-                }
-                .padding(.horizontal)
-                
-                Divider()
+                ProfileDetailSection(showUserId: showUserId)
                 
                 if !postsByUserViewModel.isLoaded {
                     ProgressView()
