@@ -33,9 +33,7 @@ class PostsForFeedViewModel: ObservableObject {
                 let user = User(documentSnapshot: document)
                 
                 var followingIds = user.followings
-                if followingIds.isEmpty {
-                    followingIds.append("ididid")
-                }
+                followingIds.append(FireAuth.userId())
                 
                 let db = Firestore.firestore()
                 db.collection("posts")
