@@ -12,17 +12,21 @@ struct UserRow: View {
     let showUser: User
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack(alignment: .top) {
-                Image(systemName: "person.crop.circle")
-                    .font(.largeTitle)
-                    .foregroundColor(.secondary)
+                NavigationLink(destination: ProfileView(showUserId: showUser.id)) {
+                    Image(systemName: "person.crop.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.secondary)
+                }
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text("\(showUser.displayName)")
                         .fontWeight(.bold)
+                    
                     Text("\(showUser.userName)")
                         .foregroundColor(.secondary)
+                    
                     Text("\(showUser.introduction)")
                 }
             }
