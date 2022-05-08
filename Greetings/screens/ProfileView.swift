@@ -23,14 +23,30 @@ struct ProfileView: View {
             VStack {
                 ProfileDetailSection(showUserId: showUserId)
                 
-                Picker("", selection: $selection) {
-                    Text("posts")
-                        .tag(0)
-                    Text("likes")
-                        .tag(1)
+                VStack(spacing: 0) {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            selection = 0
+                        }) {
+                            Text("posts")
+                                .fontWeight(.bold)
+                                .foregroundColor(selection == 0 ? .primary : .secondary)
+                        }
+                        Spacer()
+                        Button(action: {
+                            selection = 1
+                        }) {
+                            Text("likes")
+                                .fontWeight(.bold)
+                                .foregroundColor(selection == 1 ? .primary : .secondary)
+                        }
+                        Spacer()
+                    }
+                    .padding(.bottom, 4)
+                    Divider()
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.horizontal)
+                .padding(.top, 2)
                 
                 if selection == 0 {
                     ProfilePostsSection(showingUserId: showUserId)
