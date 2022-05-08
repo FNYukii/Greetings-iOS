@@ -41,6 +41,7 @@
 		546DD5342827C74D005CCBBA /* SlidingTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 546DD5332827C74D005CCBBA /* SlidingTabView */; };
 		546DD5362827CA05005CCBBA /* ProfileLikesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD5352827CA05005CCBBA /* ProfileLikesSection.swift */; };
 		546DD5382827CA2A005CCBBA /* PostsLikedByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD5372827CA2A005CCBBA /* PostsLikedByUserViewModel.swift */; };
+		546DD53A2827F865005CCBBA /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD5392827F865005CCBBA /* EditProfileView.swift */; };
 		54FECA47282683EC00C09024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA46282683EC00C09024 /* ProfileView.swift */; };
 		54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */; };
 		54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4A282757D400C09024 /* FollowingsView.swift */; };
@@ -79,6 +80,7 @@
 		546DD5302827AAFC005CCBBA /* FollowersCountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersCountViewModel.swift; sourceTree = "<group>"; };
 		546DD5352827CA05005CCBBA /* ProfileLikesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLikesSection.swift; sourceTree = "<group>"; };
 		546DD5372827CA2A005CCBBA /* PostsLikedByUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsLikedByUserViewModel.swift; sourceTree = "<group>"; };
+		546DD5392827F865005CCBBA /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		54FECA46282683EC00C09024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsByUserViewModel.swift; sourceTree = "<group>"; };
 		54FECA4A282757D400C09024 /* FollowingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingsView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				542E342E2824D93900D70981 /* ThirdView.swift */,
 				542E34322824DC9F00D70981 /* CreatePostView.swift */,
 				54FECA46282683EC00C09024 /* ProfileView.swift */,
+				546DD5392827F865005CCBBA /* EditProfileView.swift */,
 				54FECA4A282757D400C09024 /* FollowingsView.swift */,
 				54FECA4C282757DE00C09024 /* FollowersView.swift */,
 				542E3459282660E100D70981 /* SignUpView.swift */,
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				546DD53A2827F865005CCBBA /* EditProfileView.swift in Sources */,
 				542E345C282660F700D70981 /* SignInView.swift in Sources */,
 				542E34542825414A00D70981 /* PostsForFeedViewModel.swift in Sources */,
 				542E345028253BE900D70981 /* User.swift in Sources */,
