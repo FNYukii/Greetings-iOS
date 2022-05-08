@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SlidingTabView
 
 struct ProfileView: View {
     
@@ -20,33 +21,10 @@ struct ProfileView: View {
     var body: some View {
         
         ScrollView {
-            VStack {
+            VStack(spacing: 0) {
                 ProfileDetailSection(showUserId: showUserId)
                 
-                VStack(spacing: 0) {
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            selection = 0
-                        }) {
-                            Text("posts")
-                                .fontWeight(.bold)
-                                .foregroundColor(selection == 0 ? .primary : .secondary)
-                        }
-                        Spacer()
-                        Button(action: {
-                            selection = 1
-                        }) {
-                            Text("likes")
-                                .fontWeight(.bold)
-                                .foregroundColor(selection == 1 ? .primary : .secondary)
-                        }
-                        Spacer()
-                    }
-                    .padding(.bottom, 4)
-                    Divider()
-                }
-                .padding(.top, 2)
+                SlidingTabView(selection: $selection, tabs: ["posts", "likes"])
                 
                 if selection == 0 {
                     ProfilePostsSection(showingUserId: showUserId)

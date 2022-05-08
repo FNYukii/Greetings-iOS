@@ -38,6 +38,7 @@
 		546DD52D28279CE0005CCBBA /* ProfilePostsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD52C28279CE0005CCBBA /* ProfilePostsSection.swift */; };
 		546DD52F2827A1C9005CCBBA /* ProfileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD52E2827A1C9005CCBBA /* ProfileMenu.swift */; };
 		546DD5312827AAFC005CCBBA /* FollowersCountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD5302827AAFC005CCBBA /* FollowersCountViewModel.swift */; };
+		546DD5342827C74D005CCBBA /* SlidingTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 546DD5332827C74D005CCBBA /* SlidingTabView */; };
 		54FECA47282683EC00C09024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA46282683EC00C09024 /* ProfileView.swift */; };
 		54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */; };
 		54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4A282757D400C09024 /* FollowingsView.swift */; };
@@ -86,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				546DD5342827C74D005CCBBA /* SlidingTabView in Frameworks */,
 				542E3449282534A600D70981 /* FirebaseGoogleAuthUI in Frameworks */,
 				542E343A28252EE300D70981 /* FirebaseAuth in Frameworks */,
 				542E343C28252EE300D70981 /* FirebaseFirestore in Frameworks */,
@@ -222,6 +224,7 @@
 				542E343D28252EE300D70981 /* FirebaseStorage */,
 				542E3446282534A600D70981 /* FirebaseAuthUI */,
 				542E3448282534A600D70981 /* FirebaseGoogleAuthUI */,
+				546DD5332827C74D005CCBBA /* SlidingTabView */,
 			);
 			productName = Greetings;
 			productReference = 542E34122824D43800D70981 /* Greetings.app */;
@@ -254,6 +257,7 @@
 			packageReferences = (
 				542E343828252EE300D70981 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				542E3445282534A600D70981 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
+				546DD5322827C74D005CCBBA /* XCRemoteSwiftPackageReference "SlidingTabView" */,
 			);
 			productRefGroup = 542E34132824D43800D70981 /* Products */;
 			projectDirPath = "";
@@ -530,6 +534,14 @@
 				kind = branch;
 			};
 		};
+		546DD5322827C74D005CCBBA /* XCRemoteSwiftPackageReference "SlidingTabView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/QuynhNguyen/SlidingTabView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -557,6 +569,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 542E3445282534A600D70981 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
 			productName = FirebaseGoogleAuthUI;
+		};
+		546DD5332827C74D005CCBBA /* SlidingTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 546DD5322827C74D005CCBBA /* XCRemoteSwiftPackageReference "SlidingTabView" */;
+			productName = SlidingTabView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
