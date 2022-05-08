@@ -10,12 +10,12 @@ import SwiftUI
 struct ProfileDetailSection: View {
     
     private let showUserId: String
-    @State private var showUser: User? = nil
-    @State private var isShowUserLoaded = false
+    @ObservedObject private var userViewModel: UserViewModel
     @ObservedObject private var followersCountViewModel: FollowersCountViewModel
     
     init(showUserId: String) {
         self.showUserId = showUserId
+        self.userViewModel = UserViewModel(userId: showUserId)
         self.followersCountViewModel = FollowersCountViewModel(userId: showUserId)
     }
     
@@ -26,9 +26,9 @@ struct ProfileDetailSection: View {
                     .font(.largeTitle)
                     .foregroundColor(.secondary)
                 VStack(alignment: .leading) {
-                    Text(isShowUserLoaded ? showUser!.displayName : "---")
+                    Text(userViewModel.isLoaded ? userViewModel.user!.displayName : "---")
                         .fontWeight(.bold)
-                    Text(isShowUserLoaded ? showUser!.userName : "---")
+                    Text(userViewModel.isLoaded ? userViewModel.user!.userName : "---")
                         .foregroundColor(.secondary)
                 }
                 Spacer()
@@ -37,12 +37,12 @@ struct ProfileDetailSection: View {
                 }
             }
             
-            Text(isShowUserLoaded ? showUser!.introduction : "---")
+            Text(userViewModel.isLoaded ? userViewModel.user!.introduction : "---")
                 .padding(.vertical, 4)
             
             HStack {
                 NavigationLink(destination: FollowingsView(showUserId: showUserId)) {
-                    Text(isShowUserLoaded ? "\(showUser!.followings.count)" : "-")
+                    Text(userViewModel.isLoaded ? "\(userViewModel.user!.followings.count)" : "-")
                         .foregroundColor(.primary)
                     Text("followings")
                         .foregroundColor(.secondary)
@@ -63,17 +63,5 @@ struct ProfileDetailSection: View {
             }
         }
         .padding(.horizontal)
-        .onAppear(perform: load)
-    }
-    
-    private func load() {
-        FireUser.readUser(userId: showUserId) { user in
-            if let user = user {
-                withAnimation {
-                    self.showUser = user
-                    self.isShowUserLoaded = true
-                }
-            }
-        }
     }
 }
