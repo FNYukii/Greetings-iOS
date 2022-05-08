@@ -20,10 +20,20 @@ struct FollowingsView: View {
     
     var body: some View {
         
-        ScrollView {
-            VStack {
-                ForEach(followings) { user in
-                    UserRow(showUser: user)
+        
+        Group {
+            if !isFollowingsLoaded {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+            }
+            
+            if isFollowingsLoaded {
+                ScrollView {
+                    VStack {
+                        ForEach(followings) { user in
+                            UserRow(showUser: user)
+                        }
+                    }
                 }
             }
         }
