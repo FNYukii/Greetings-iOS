@@ -29,7 +29,7 @@
 		542E344E28253A1F00D70981 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E344D28253A1F00D70981 /* Post.swift */; };
 		542E345028253BE900D70981 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E344F28253BE900D70981 /* User.swift */; };
 		542E345228253DB900D70981 /* FirePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E345128253DB900D70981 /* FirePost.swift */; };
-		542E34542825414A00D70981 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E34532825414A00D70981 /* PostViewModel.swift */; };
+		542E34542825414A00D70981 /* PostsForFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E34532825414A00D70981 /* PostsForFeedViewModel.swift */; };
 		542E3456282542E100D70981 /* FireUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3455282542E100D70981 /* FireUser.swift */; };
 		542E345A282660E100D70981 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E3459282660E100D70981 /* SignUpView.swift */; };
 		542E345C282660F700D70981 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E345B282660F700D70981 /* SignInView.swift */; };
@@ -60,7 +60,7 @@
 		542E344D28253A1F00D70981 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		542E344F28253BE900D70981 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		542E345128253DB900D70981 /* FirePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePost.swift; sourceTree = "<group>"; };
-		542E34532825414A00D70981 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		542E34532825414A00D70981 /* PostsForFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsForFeedViewModel.swift; sourceTree = "<group>"; };
 		542E3455282542E100D70981 /* FireUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireUser.swift; sourceTree = "<group>"; };
 		542E3459282660E100D70981 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		542E345B282660F700D70981 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				542E343F282531CE00D70981 /* SignInStateViewModel.swift */,
-				542E34532825414A00D70981 /* PostViewModel.swift */,
+				542E34532825414A00D70981 /* PostsForFeedViewModel.swift */,
 				54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */,
 			);
 			path = viewModels;
@@ -269,7 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				542E345C282660F700D70981 /* SignInView.swift in Sources */,
-				542E34542825414A00D70981 /* PostViewModel.swift in Sources */,
+				542E34542825414A00D70981 /* PostsForFeedViewModel.swift in Sources */,
 				542E345028253BE900D70981 /* User.swift in Sources */,
 				542E34182824D43800D70981 /* ContentView.swift in Sources */,
 				542E34352824F7A100D70981 /* PostRow.swift in Sources */,
