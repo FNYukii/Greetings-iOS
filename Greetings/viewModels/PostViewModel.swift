@@ -26,7 +26,7 @@ class PostViewModel: ObservableObject {
                 
                 var newPosts: [Post] = []
                 snapshot.documents.forEach { document in
-                    let post = Post(document: document)
+                    let post = Post(queryDocumentSnapshot: document)
                     newPosts.append(post)
                 }
                 

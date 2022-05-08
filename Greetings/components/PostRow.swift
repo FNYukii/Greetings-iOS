@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PostRow: View {
     
-    private let showPost: Post
+    private var showPost: Post
     private let isNavLinkDisable: Bool
     
     @State private var postUser: User? = nil
@@ -109,10 +109,12 @@ struct PostRow: View {
         }
         .padding(.horizontal)
         
-        .onAppear(perform: load)
+        .onAppear {
+            loadUser()
+        }
     }
     
-    private func load() {
+    private func loadUser() {
         FireUser.readUser(userId: showPost.userId) { user in
             if let user = user {
                 withAnimation {
@@ -121,6 +123,10 @@ struct PostRow: View {
                 }
             }
         }
+    }
+    
+    private func loadPost() {
+        
     }
     
     private func HowManyAgoText(from: Date) -> Text {

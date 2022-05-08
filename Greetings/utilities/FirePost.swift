@@ -9,6 +9,22 @@ import Firebase
 
 class FirePost {
     
+    static func readPost(postId: String, completion: ((Post?) -> Void)?) {
+        let db = Firestore.firestore()
+        db.collection("posts")
+            .document(postId)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let post = Post(documentSnapshot: document)
+                    print("HELLO! Success! Read a post")
+                    completion?(post)
+                } else {
+                    print("HELLO! Fail! The post does not exist.")
+                    completion?(nil)
+                }
+            }
+    }
+    
     static func readPosts(userId: String, completion: (([Post]) -> Void)?) {
         let db = Firestore.firestore()
         db.collection("posts")
@@ -20,7 +36,7 @@ class FirePost {
                 } else {
                     var posts: [Post] = []
                     for document in querySnapshot!.documents {
-                        let post = Post(document: document)
+                        let post = Post(documentSnapshot: document)
                         posts.append(post)
                     }
                     completion?(posts)
