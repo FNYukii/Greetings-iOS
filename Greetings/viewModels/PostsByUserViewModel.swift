@@ -1,28 +1,29 @@
 //
-//  PostViewModel.swift
+//  PostsByUserViewModel.swift
 //  Greetings
 //
-//  Created by Yu on 2022/05/06.
+//  Created by Yu on 2022/05/08.
 //
 
 import Firebase
 import SwiftUI
 
-class PostViewModel: ObservableObject {
+class PostsByUserViewModel: ObservableObject {
     
     @Published var posts: [Post] = []
     @Published var isLoaded = true
     
-    init() {
+    init(userId: String) {
         let db = Firestore.firestore()
         db.collection("posts")
+            .whereField("userId", isEqualTo: userId)
             .order(by: "createdAt", descending: true)
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
-                    print("HELLO! Fail! Error fetching snapshots: \(error!)")
+                    print("HELLO! Fail! Error reading Posts posted by \(userId): \(error!)")
                     return
                 }
-                print("HELLO! Success! Read Posts. Size: \(snapshot.documents.count)")
+                print("HELLO! Success! Read Posts posted by \(userId). Size: \(snapshot.documents.count)")
                 
                 var newPosts: [Post] = []
                 snapshot.documents.forEach { document in
@@ -36,5 +37,4 @@ class PostViewModel: ObservableObject {
                 }
             }
     }
-    
 }

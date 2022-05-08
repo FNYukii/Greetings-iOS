@@ -9,40 +9,47 @@ import SwiftUI
 
 struct PostRow: View {
     
-    private let post: Post
-    @State private var user: User? = nil
+    private var showPost: Post
+    private let isNavLinkDisable: Bool
     
-    init(post: Post) {
-        self.post = post
+    @State private var postUser: User? = nil
+    @State private var isPostUserLoaded = false
+    
+    init(showPost: Post, isNavLinkDisable: Bool = false) {
+        self.showPost = showPost
+        self.isNavLinkDisable = isNavLinkDisable
     }
     
     var body: some View {
         VStack {
             HStack(alignment: .top) {
                 
-                Image(systemName: "person.crop.circle")
-                    .font(.largeTitle)
-                    .foregroundColor(.secondary)
+                NavigationLink(destination: ProfileView(showUserId: showPost.userId)) {
+                    Image(systemName: "person.crop.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.secondary)
+                }
+                .disabled(isNavLinkDisable)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text(user != nil ? user!.displayName: "-")
+                        Text(isPostUserLoaded ? postUser!.displayName: "---")
                             .fontWeight(.bold)
                             .lineLimit(1)
                         
-                        Text(user != nil ? "@\(user!.userName)" : "-")
+                        Text(isPostUserLoaded ? "@\(postUser!.userName)" : "---")
                             .foregroundColor(.secondary)
                             .lineLimit(1)
                         
-                        HowManyAgoText(from: post.createdAt)
+                        HowManyAgoText(from: showPost.createdAt)
                             .foregroundColor(.secondary)
                         
                         Spacer()
                         
                         Menu {
-                            if post.userId == FireAuth.userId() {
+                            if showPost.userId == FireAuth.userId() {
                                 Button(role: .destructive){
-                                    FirePost.delete(id: post.id)
+                                    FirePost.deletePost(postId: showPost.id)
                                 } label: {
                                     Label("delete-post", systemImage: "trash")
                                 }
@@ -50,17 +57,17 @@ struct PostRow: View {
                                 Button(action: {
                                     // TODO: Follow
                                 }) {
-                                    Label("follow \(post.userId)", systemImage: "person.fill.badge.plus")
+                                    Label("follow \(isPostUserLoaded ? postUser!.userName: "---")", systemImage: "person.fill.badge.plus")
                                 }
                                 Button(action: {
                                     // TODO: Mute
                                 }) {
-                                    Label("Mute \(post.userId)", systemImage: "speaker.slash")
+                                    Label("mute \(isPostUserLoaded ? postUser!.userName: "---")", systemImage: "speaker.slash")
                                 }
                                 Button(action: {
                                     // TODO: Block
                                 }) {
-                                    Label("Block \(post.userId)", systemImage: "nosign")
+                                    Label("block \(isPostUserLoaded ? postUser!.userName: "---")", systemImage: "nosign")
                                 }
                             }
                         } label : {
@@ -71,17 +78,17 @@ struct PostRow: View {
                         
                     }
                     
-                    Text(post.text)
+                    Text(showPost.text)
                     
                     HStack(spacing: 0) {
                         Button(action: {
-                            if !post.likedUsers.contains(FireAuth.userId()) {
-                                FirePost.like(id: post.id)
+                            if !showPost.likedUsers.contains(FireAuth.userId()) {
+                                FirePost.likePost(postId: showPost.id)
                             } else {
-                                FirePost.unlike(id: post.id)
+                                FirePost.unlikePost(postId: showPost.id)
                             }
                         }) {
-                            if !post.likedUsers.contains(FireAuth.userId()) {
+                            if !showPost.likedUsers.contains(FireAuth.userId()) {
                                 Image(systemName: "heart")
                                     .foregroundColor(.secondary)
                             } else {
@@ -90,8 +97,8 @@ struct PostRow: View {
                             }
                         }
                         
-                        Text("\(post.likedUsers.count)")
-                            .foregroundColor(post.likedUsers.contains(FireAuth.userId()) ? .red : .secondary)
+                        Text("\(showPost.likedUsers.count)")
+                            .foregroundColor(showPost.likedUsers.contains(FireAuth.userId()) ? .red : .secondary)
                             .font(.callout)
                             .padding(.leading, 4)
                     }
@@ -103,15 +110,23 @@ struct PostRow: View {
         .padding(.horizontal)
         
         .onAppear {
-            let userId = post.userId
-            FireUser.read(id: userId) { user in
-                if let user = user {
-                    withAnimation {
-                        self.user = user
-                    }
+            loadUser()
+        }
+    }
+    
+    private func loadUser() {
+        FireUser.readUser(userId: showPost.userId) { user in
+            if let user = user {
+                withAnimation {
+                    self.postUser = user
+                    self.isPostUserLoaded = true
                 }
             }
         }
+    }
+    
+    private func loadPost() {
+        
     }
     
     private func HowManyAgoText(from: Date) -> Text {

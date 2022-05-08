@@ -9,108 +9,138 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    let userId: String
+    let showUserId: String
     
-    @State private var user: User? = nil
-    @State private var posts: [Post] = []
+    @State private var showUser: User? = nil
+    @State private var currentUser: User? = nil
+    @State private var followers: [User] = []
+    @ObservedObject private var postsByUserViewModel: PostsByUserViewModel
     
-    @State private var isUserLoaded = false
-    @State private var isPostsLoaded = false
+    @State private var isShowUserLoaded = false
+    @State private var isCurrentUserLoaded = false
+    @State private var isFollowersLoaded = false
+    
+    init(showUserId: String) {
+        self.showUserId = showUserId
+        self.postsByUserViewModel = PostsByUserViewModel(userId: showUserId)
+    }
 
     var body: some View {
         
         ScrollView {
-            VStack {
+            VStack(alignment: .leading) {
                 
-                if !isUserLoaded {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .padding()
-                }
-                
-                if isUserLoaded {
+                HStack {
+                    Image(systemName: "person.crop.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.secondary)
                     VStack(alignment: .leading) {
-                        HStack {
-                            Image(systemName: "person.crop.circle")
-                                .font(.largeTitle)
-                                .foregroundColor(.secondary)
-                            VStack(alignment: .leading) {
-                                Text(user != nil ? user!.displayName : "nothing")
-                                    .fontWeight(.bold)
-                                Text(user != nil ? user!.userName : "nothing")
-                                    .foregroundColor(.secondary)
-                            }
-                            Spacer()
-                        }
-                        .padding(.leading)
-                        
-                        Text(user != nil ? user!.introduction : "nothing")
-                            .padding(.horizontal)
-                            .padding(.vertical, 4)
-                        
-                        HStack {
-                            Text(user != nil ? "\(user!.followings.count)" : "nothing")
-                            Text("followings")
-                                .foregroundColor(.secondary)
-                                .padding(.trailing)
-                            Text(user != nil ? "\(user!.followers.count)" : "nothing")
-                            Text("followers")
-                                .foregroundColor(.secondary)
-                        }
-                        .padding(.horizontal)
+                        Text(isShowUserLoaded ? showUser!.displayName : "---")
+                            .fontWeight(.bold)
+                        Text(isShowUserLoaded ? showUser!.userName : "---")
+                            .foregroundColor(.secondary)
                     }
+                    Spacer()
                 }
+                .padding(.leading)
+                
+                Text(isShowUserLoaded ? showUser!.introduction : "---")
+                    .padding(.horizontal)
+                    .padding(.vertical, 4)
+                
+                HStack {
+                    Text(isShowUserLoaded ? "\(showUser!.followings.count)" : "-")
+                    Text("followings")
+                        .foregroundColor(.secondary)
+                        .padding(.trailing)
+                    Text(isFollowersLoaded ? "\(self.followers.count)" : "-")
+                    Text("followers")
+                        .foregroundColor(.secondary)
+                }
+                .padding(.horizontal)
                 
                 Divider()
                 
-                if !isPostsLoaded {
+                if !postsByUserViewModel.isLoaded {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
-                        .padding()
-                }
-                
-                if isPostsLoaded {
-                    ForEach(posts) { post in
-                        PostRow(post: post)
+                } else {
+                    ForEach(postsByUserViewModel.posts) { post in
+                        PostRow(showPost: post, isNavLinkDisable: true)
                             .listRowSeparator(.hidden)
                     }
                 }
             }
         }
         
-        .onAppear {
-            FireUser.read(id: userId) { user in
-                if let user = user {
-                    self.user = user
-                    self.isUserLoaded = true
-                }
-            }
-            FirePost.read(userId: userId) { posts in
-                self.posts = posts
-                self.isPostsLoaded = true
-            }
-        }
+        .onAppear(perform: load)
         
-        .navigationTitle(user != nil ? user!.displayName : "profile")
+        .navigationTitle(isShowUserLoaded ? showUser!.displayName : "profile")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            
             ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    Button(action: {
+                if showUserId == FireAuth.userId() {
+                    Menu {
+                        Button(action: {
+                            // TODO: Edit
+                        }) {
+                            Label("edit", systemImage: "square.and.pencil")
+                        }
                         
-                    }) {
-                        Label("edit", systemImage: "square.and.pencil")
+                        Button(action: {
+                            FireAuth.signOut()
+                        }) {
+                            Label("sign-out", systemImage: "rectangle.portrait.and.arrow.right")
+                        }
+                        
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.title3)
                     }
-                    Button(action: {
-                        FireAuth.signOut()
-                    }) {
-                        Label("sign-out", systemImage: "rectangle.portrait.and.arrow.right")
-                    }
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                        .font(.title3)
                 }
+                
+                if showUserId != FireAuth.userId() && !isCurrentUserLoaded {
+                    Text("---")
+                }
+                
+                if showUserId != FireAuth.userId() && isCurrentUserLoaded {
+                    if !currentUser!.followings.contains(showUserId) {
+                        Button("follow") {
+                            FireUser.followUser(userId: showUserId)
+                            load()
+                        }
+                    } else {
+                        Button("unfollow") {
+                            FireUser.unfollowUser(userId: showUserId)
+                            load()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func load() {
+        FireUser.readUser(userId: showUserId) { user in
+            if let user = user {
+                withAnimation {
+                    self.showUser = user
+                    self.isShowUserLoaded = true
+                }
+            }
+        }
+        FireUser.readUser(userId: FireAuth.userId()) { user in
+            if let user = user {
+                withAnimation {
+                    self.currentUser = user
+                    self.isCurrentUserLoaded = true
+                }
+            }
+        }
+        FireUser.readFollowers(userId: showUserId) { users in
+            withAnimation {
+                self.followers = users
+                self.isFollowersLoaded = true
             }
         }
     }

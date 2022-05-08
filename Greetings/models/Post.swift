@@ -9,19 +9,30 @@ import Foundation
 import Firebase
 
 struct Post: Identifiable {
-    let id: String
-    let createdAt: Date
-    let userId: String
-    let text: String
-    let images: [String]
-    let likedUsers: [String]
+    var id: String = ""
+    var createdAt: Date = Date()
+    var userId: String = ""
+    var text: String = ""
+    var images: [String] = []
+    var likedUsers: [String] = []
     
-    init(document: QueryDocumentSnapshot) {
-        self.id = document.documentID
-        self.createdAt = (document.get("createdAt") as! Timestamp).dateValue()
-        self.userId = document.get("userId") as! String
-        self.text = document.get("text") as! String
-        self.images = document.get("images") as! [String]
-        self.likedUsers = document.get("likedUsers") as! [String]
+    init(queryDocumentSnapshot: QueryDocumentSnapshot? = nil, documentSnapshot: DocumentSnapshot? = nil) {
+        if let queryDocumentSnapshot = queryDocumentSnapshot {
+            self.id = queryDocumentSnapshot.documentID
+            self.createdAt = (queryDocumentSnapshot.get("createdAt") as! Timestamp).dateValue()
+            self.userId = queryDocumentSnapshot.get("userId") as! String
+            self.text = queryDocumentSnapshot.get("text") as! String
+            self.images = queryDocumentSnapshot.get("images") as! [String]
+            self.likedUsers = queryDocumentSnapshot.get("likedUsers") as! [String]
+        }
+        
+        if let documentSnapshot = documentSnapshot {
+            self.id = documentSnapshot.documentID
+            self.createdAt = (documentSnapshot.get("createdAt") as! Timestamp).dateValue()
+            self.userId = documentSnapshot.get("userId") as! String
+            self.text = documentSnapshot.get("text") as! String
+            self.images = documentSnapshot.get("images") as! [String]
+            self.likedUsers = documentSnapshot.get("likedUsers") as! [String]
+        }
     }
 }

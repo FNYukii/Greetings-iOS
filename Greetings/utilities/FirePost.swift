@@ -9,7 +9,23 @@ import Firebase
 
 class FirePost {
     
-    static func read(userId: String, completion: (([Post]) -> Void)?) {
+    static func readPost(postId: String, completion: ((Post?) -> Void)?) {
+        let db = Firestore.firestore()
+        db.collection("posts")
+            .document(postId)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let post = Post(documentSnapshot: document)
+                    print("HELLO! Success! Read a post")
+                    completion?(post)
+                } else {
+                    print("HELLO! Fail! The post does not exist.")
+                    completion?(nil)
+                }
+            }
+    }
+    
+    static func readPosts(userId: String, completion: (([Post]) -> Void)?) {
         let db = Firestore.firestore()
         db.collection("posts")
             .whereField("userId", isEqualTo: userId)
@@ -20,7 +36,7 @@ class FirePost {
                 } else {
                     var posts: [Post] = []
                     for document in querySnapshot!.documents {
-                        let post = Post(document: document)
+                        let post = Post(documentSnapshot: document)
                         posts.append(post)
                     }
                     completion?(posts)
@@ -28,7 +44,7 @@ class FirePost {
         }
     }
     
-    static func create(text: String) {
+    static func createPost(text: String) {
         let userId = FireAuth.userId()
         let db = Firestore.firestore()
         db.collection("posts")
@@ -47,29 +63,29 @@ class FirePost {
             }
     }
     
-    static func like(id: String) {
+    static func likePost(postId: String) {
         let db = Firestore.firestore()
         db.collection("posts")
-            .document(id)
+            .document(postId)
             .updateData([
                 "likedUsers": FieldValue.arrayUnion([FireAuth.userId()])
             ])
     }
     
-    static func unlike(id: String) {
+    static func unlikePost(postId: String) {
         let db = Firestore.firestore()
         db.collection("posts")
-            .document(id)
+            .document(postId)
             .updateData([
                 "likedUsers": FieldValue.arrayRemove([FireAuth.userId()])
             ])
     }
     
-    static func delete(id: String) {
+    static func deletePost(postId: String) {
         // TODO: Delete post
         let db = Firestore.firestore()
         db.collection("posts")
-            .document(id)
+            .document(postId)
             .delete() { err in
             if let err = err {
                 print("HELLO! Fail! Error removing document: \(err)")

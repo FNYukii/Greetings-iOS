@@ -18,7 +18,7 @@ struct FirstView: View {
             ScrollView {
                 VStack {
                     ForEach(postViewModel.posts) { post in
-                        PostRow(post: post)
+                        PostRow(showPost: post)
                     }
                 }
             }
@@ -31,7 +31,7 @@ struct FirstView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink(destination: ProfileView(userId: FireAuth.userId())) {
+                    NavigationLink(destination: ProfileView(showUserId: FireAuth.userId())) {
                         Image(systemName: "person.crop.circle")
                             .font(.title2)
                     }
