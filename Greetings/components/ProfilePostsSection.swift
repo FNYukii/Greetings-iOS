@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct ProfilePostsSection: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    
+    @ObservedObject private var postsByUserViewModel: PostsByUserViewModel
+    @State private var isNavLinkActive = false
+    @State private var openUserId = ""
 
-struct PostsByUserSection_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfilePostsSection()
+    init(showingUserId: String) {
+        self.postsByUserViewModel = PostsByUserViewModel(userId: showingUserId)
+    }
+    
+    var body: some View {
+        if !postsByUserViewModel.isLoaded {
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+        } else {
+            ForEach(postsByUserViewModel.posts) { post in
+                PostRow(showPost: post, isNavLinkDisable: true, isNavLinkActive: $isNavLinkActive, openUserId: $openUserId)
+                    .listRowSeparator(.hidden)
+            }
+        }
     }
 }
