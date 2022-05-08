@@ -14,8 +14,8 @@ struct SignUpView: View {
     @State private var email = ""
     @State private var password = ""
     
-    @State private var userName = ""
     @State private var displayName = ""
+    @State private var userName = ""
     @State private var introduction = ""
     
     var body: some View {
@@ -27,8 +27,8 @@ struct SignUpView: View {
                     TextField("password", text: $password)
                 }
                 Section {
-                    TextField("user-name", text: $userName)
                     TextField("display-name", text: $displayName)
+                    TextField("user-name", text: $userName)
                     MyTextEditor(hint: "introduction", text: $introduction)
                 }
             }
