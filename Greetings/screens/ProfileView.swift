@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SlidingTabView
 
 struct ProfileView: View {
     
     private let showUserId: String
     @State private var navTitle = "---"
+    @State private var selection = 0
     
     init(showUserId: String) {
         self.showUserId = showUserId
@@ -19,9 +21,18 @@ struct ProfileView: View {
     var body: some View {
         
         ScrollView {
-            VStack {
+            VStack(spacing: 0) {
                 ProfileDetailSection(showUserId: showUserId)
-                ProfilePostsSection(showingUserId: showUserId)
+                
+                SlidingTabView(selection: $selection, tabs: ["posts", "likes"])
+                
+                if selection == 0 {
+                    ProfilePostsSection(postedBy: showUserId)
+                }
+                if selection == 1 {
+                    ProfileLikesSection(likedBy: showUserId)
+                }
+                
             }
         }
         .onAppear(perform: load)

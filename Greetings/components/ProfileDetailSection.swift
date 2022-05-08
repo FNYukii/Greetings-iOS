@@ -33,10 +33,8 @@ struct ProfileDetailSection: View {
                 }
                 Spacer()
             }
-            .padding(.leading)
             
             Text(isShowUserLoaded ? showUser!.introduction : "---")
-                .padding(.horizontal)
                 .padding(.vertical, 4)
             
             HStack {
@@ -51,19 +49,17 @@ struct ProfileDetailSection: View {
                 NavigationLink(destination: FollowersView(showUserId: showUserId)) {
                     if !followersCountViewModel.isLoaded {
                         Text("-")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.primary)
                     } else {
                         Text("\(followersCountViewModel.followersCount)")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.primary)
                     }
                     Text("followers")
                         .foregroundColor(.secondary)
                 }
             }
-            .padding(.horizontal)
-            
-            Divider()
         }
+        .padding(.horizontal, 8)
         .onAppear(perform: load)
     }
     

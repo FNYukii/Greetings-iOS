@@ -9,8 +9,10 @@ import SwiftUI
 
 struct SecondView: View {
     var body: some View {
-        Text("SecondView")
-            .navigationTitle("search")
-            .navigationBarTitleDisplayMode(.inline)
+        NavigationView {
+            Text("SecondView")
+                .navigationTitle("search")
+                .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }

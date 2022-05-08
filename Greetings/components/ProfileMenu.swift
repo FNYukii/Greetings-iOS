@@ -16,12 +16,12 @@ struct ProfileMenu: View {
                 Label("edit", systemImage: "square.and.pencil")
             }
             
-            Button(action: {
+            Button(role: .destructive) {
                 FireAuth.signOut()
-            }) {
+            } label: {
                 Label("sign-out", systemImage: "rectangle.portrait.and.arrow.right")
+
             }
-            
         } label: {
             Image(systemName: "ellipsis.circle")
                 .font(.title3)
