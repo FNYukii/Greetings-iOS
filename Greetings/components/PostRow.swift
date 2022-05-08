@@ -91,7 +91,9 @@ struct PostRow: View {
                     HStack(spacing: 0) {
                         Button(action: {
                             if !showPost.likedUsers.contains(FireAuth.userId()) {
-                                FirePost.likePost(postId: showPost.id)
+                                if showPost.userId != FireAuth.userId() {
+                                    FirePost.likePost(postId: showPost.id)
+                                }
                             } else {
                                 FirePost.unlikePost(postId: showPost.id)
                             }
