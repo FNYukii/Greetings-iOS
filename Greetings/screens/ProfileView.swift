@@ -12,13 +12,14 @@ struct ProfileView: View {
     let showUserId: String
     
     @State private var showUser: User? = nil
-    @State private var currentUser: User? = nil
     @State private var followers: [User] = []
     @ObservedObject private var postsByUserViewModel: PostsByUserViewModel
     
     @State private var isShowUserLoaded = false
-    @State private var isCurrentUserLoaded = false
     @State private var isFollowersLoaded = false
+    
+    @State private var isNavLinkActive = false
+    @State private var openUserId = ""
     
     init(showUserId: String) {
         self.showUserId = showUserId
@@ -73,7 +74,7 @@ struct ProfileView: View {
                         .progressViewStyle(CircularProgressViewStyle())
                 } else {
                     ForEach(postsByUserViewModel.posts) { post in
-                        PostRow(showPost: post, isNavLinkDisable: true)
+                        PostRow(showPost: post, isNavLinkDisable: true, isNavLinkActive: $isNavLinkActive, openUserId: $openUserId)
                             .listRowSeparator(.hidden)
                     }
                 }
@@ -104,26 +105,8 @@ struct ProfileView: View {
                         Image(systemName: "ellipsis.circle")
                             .font(.title3)
                     }
-                }
-                
-                if showUserId != FireAuth.userId() && !isCurrentUserLoaded {
-                    Text("---")
-                }
-                
-                if showUserId != FireAuth.userId() && isCurrentUserLoaded {
-                    if !currentUser!.followings.contains(showUserId) {
-                        Button("follow") {
-                            FireUser.followUser(userId: showUserId)
-                            load()
-                        }
-                        .buttonStyle(BorderedProminentButtonStyle())
-                        .cornerRadius(.infinity)
-                    } else {
-                        Button("unfollow") {
-                            FireUser.unfollowUser(userId: showUserId)
-                            load()
-                        }
-                    }
+                } else {
+                    FollowButton(showUserId: showUserId)
                 }
             }
         }
@@ -138,14 +121,6 @@ struct ProfileView: View {
                 }
             }
         }
-        FireUser.readUser(userId: FireAuth.userId()) { user in
-            if let user = user {
-                withAnimation {
-                    self.currentUser = user
-                    self.isCurrentUserLoaded = true
-                }
-            }
-        }
         FireUser.readFollowers(userId: showUserId) { users in
             withAnimation {
                 self.followers = users
@@ -154,9 +129,3 @@ struct ProfileView: View {
         }
     }
 }
-
-//struct ProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProfileView(userId: "jfaldjflakgjjg")
-//    }
-//}

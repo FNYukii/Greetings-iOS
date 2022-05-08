@@ -10,11 +10,7 @@ import SwiftUI
 struct SecondView: View {
     var body: some View {
         Text("SecondView")
-    }
-}
-
-struct SecondView_Previews: PreviewProvider {
-    static var previews: some View {
-        SecondView()
+            .navigationTitle("search")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }

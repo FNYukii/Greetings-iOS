@@ -9,16 +9,27 @@ import SwiftUI
 
 struct FirstView: View {
     
-    @ObservedObject private var postViewModel = PostViewModel()
+    @ObservedObject private var postsViewModel: PostsForFeedViewModel
     
     @State private var isShowSheet = false
+    
+    @State private var isNavLinkActive = false
+    @State private var openUserId = ""
+    
+    init() {
+        postsViewModel = PostsForFeedViewModel(userId: FireAuth.userId())
+    }
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    ForEach(postViewModel.posts) { post in
-                        PostRow(showPost: post)
+                    ForEach(postsViewModel.posts) { post in
+                        PostRow(showPost: post, isNavLinkActive: $isNavLinkActive, openUserId: $openUserId)
+                    }
+                    
+                    NavigationLink(destination: ProfileView(showUserId: openUserId), isActive: $isNavLinkActive) {
+                        EmptyView()
                     }
                 }
             }
@@ -48,9 +59,3 @@ struct FirstView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
-//struct FirstView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FirstView()
-//    }
-//}

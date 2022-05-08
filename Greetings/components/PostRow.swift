@@ -15,16 +15,24 @@ struct PostRow: View {
     @State private var postUser: User? = nil
     @State private var isPostUserLoaded = false
     
-    init(showPost: Post, isNavLinkDisable: Bool = false) {
+    @Binding var isNavLinkActive: Bool
+    @Binding var openUserId: String
+    
+    init(showPost: Post, isNavLinkDisable: Bool = false, isNavLinkActive: Binding<Bool>, openUserId: Binding<String>) {
         self.showPost = showPost
         self.isNavLinkDisable = isNavLinkDisable
+        self._isNavLinkActive = isNavLinkActive
+        self._openUserId = openUserId
     }
     
     var body: some View {
         VStack {
             HStack(alignment: .top) {
                 
-                NavigationLink(destination: ProfileView(showUserId: showPost.userId)) {
+                Button(action: {
+                    openUserId = showPost.userId
+                    isNavLinkActive = true
+                }) {
                     Image(systemName: "person.crop.circle")
                         .font(.largeTitle)
                         .foregroundColor(.secondary)
@@ -160,9 +168,3 @@ struct PostRow: View {
         return Text(dateFormatter.string(from: from))
     }
 }
-
-//struct PostRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PostRow()
-//    }
-//}

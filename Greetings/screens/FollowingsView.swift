@@ -56,9 +56,3 @@ struct FollowingsView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-
-//struct FollowingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FollowingsView(showUserId: "hello")
-//    }
-//}
