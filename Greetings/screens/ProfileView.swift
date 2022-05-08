@@ -13,14 +13,17 @@ struct ProfileView: View {
     
     @State private var showUser: User? = nil
     @State private var currentUser: User? = nil
-    @State private var posts: [Post] = []
     @State private var followers: [User] = []
+    @ObservedObject private var postsByUserViewModel: PostsByUserViewModel
     
     @State private var isShowUserLoaded = false
     @State private var isCurrentUserLoaded = false
-    @State private var isPostsLoaded = false
     @State private var isFollowersLoaded = false
     
+    init(showUserId: String) {
+        self.showUserId = showUserId
+        self.postsByUserViewModel = PostsByUserViewModel(userId: showUserId)
+    }
 
     var body: some View {
         
@@ -58,11 +61,11 @@ struct ProfileView: View {
                 
                 Divider()
                 
-                if !isPostsLoaded {
+                if !postsByUserViewModel.isLoaded {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                 } else {
-                    ForEach(posts) { post in
+                    ForEach(postsByUserViewModel.posts) { post in
                         PostRow(showPost: post, isNavLinkDisable: true)
                             .listRowSeparator(.hidden)
                     }
@@ -132,12 +135,6 @@ struct ProfileView: View {
                     self.currentUser = user
                     self.isCurrentUserLoaded = true
                 }
-            }
-        }
-        FirePost.readPosts(userId: showUserId) { posts in
-            withAnimation {
-                self.posts = posts
-                self.isPostsLoaded = true
             }
         }
         FireUser.readFollowers(userId: showUserId) { users in
