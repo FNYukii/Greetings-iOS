@@ -16,10 +16,10 @@ class FireUser {
             .getDocument { (document, error) in
                 if let document = document, document.exists {
                     let user = User(documentSnapshot: document)
-                    print("HELLO! Success! userId: \(userId), displayName: \(user.displayName)")
+                    print("HELLO! Success! Read User identified as \(userId). Size: 1")
                     completion?(user)
                 } else {
-                    print("HELLO! Fail! Document User does not exist.")
+                    print("HELLO! Fail! User identified as \(userId) does not exist.")
                     completion?(nil)
                 }
             }
@@ -45,8 +45,9 @@ class FireUser {
                     .whereField(FieldPath.documentID(), in: followingsIds)
                     .getDocuments() { (querySnapshot, err) in
                         if let err = err {
-                            print("HELLO! Fail! Error reading users: \(err)")
+                            print("HELLO! Fail! Error reading Users followed by \(userId): \(err)")
                         } else {
+                            print("HELLO! Success! Read Users followed by \(userId). Size: \(querySnapshot!.documents.count)")
                             var users: [User] = []
                             for document in querySnapshot!.documents {
                                 let user = User(documentSnapshot: document)
@@ -65,8 +66,9 @@ class FireUser {
             .whereField("followings", arrayContains: userId)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
+                    print("HELLO! Fail! Error reading Users following \(userId). Error: \(err)")
                 } else {
+                    print("HELLO! Success! Read Users following \(userId). Size: \(querySnapshot!.documents.count)")
                     var users: [User] = []
                     for document in querySnapshot!.documents {
                         let user = User(documentSnapshot: document)
@@ -90,9 +92,9 @@ class FireUser {
             "followers": []
         ]) { err in
             if let err = err {
-                print("HELLO! Fail! Error writing document: \(err)")
+                print("HELLO! Fail! Error writing User: \(err)")
             } else {
-                print("HELLO! Success! Document successfully written!")
+                print("HELLO! Success! User successfully written!")
             }
         }
     }
@@ -103,7 +105,13 @@ class FireUser {
             .document(FireAuth.userId())
             .updateData([
                 "followings": FieldValue.arrayUnion([userId])
-            ])
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating User. Error: \(err)")
+                } else {
+                    print("HELLO! Success! User successfully updated.")
+                }
+            }
     }
     
     static func unfollowUser(userId: String) {
@@ -112,7 +120,13 @@ class FireUser {
             .document(FireAuth.userId())
             .updateData([
                 "followings": FieldValue.arrayRemove([userId])
-            ])
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating User. Error: \(err)")
+                } else {
+                    print("HELLO! Success! User successfully updated.")
+                }
+            }
     }
     
     static func deleteUser() {
