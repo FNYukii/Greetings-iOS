@@ -59,7 +59,7 @@ struct ProfileDetailSection: View {
                 }
             }
         }
-        .padding(.horizontal, 8)
+        .padding(.horizontal)
         .onAppear(perform: load)
     }
     
