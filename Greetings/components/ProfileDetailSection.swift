@@ -33,10 +33,8 @@ struct ProfileDetailSection: View {
                 }
                 Spacer()
             }
-            .padding(.leading)
             
             Text(isShowUserLoaded ? showUser!.introduction : "---")
-                .padding(.horizontal)
                 .padding(.vertical, 4)
             
             HStack {
@@ -60,8 +58,8 @@ struct ProfileDetailSection: View {
                         .foregroundColor(.secondary)
                 }
             }
-            .padding(.horizontal)            
         }
+        .padding(.horizontal, 8)
         .onAppear(perform: load)
     }
     
