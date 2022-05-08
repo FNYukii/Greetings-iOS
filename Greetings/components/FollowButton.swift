@@ -28,13 +28,15 @@ struct FollowButton: View {
                         FireUser.followUser(userId: showingUserId)
                         load()
                     }
-                    .buttonStyle(BorderedProminentButtonStyle())
+                    .buttonStyle(.borderedProminent)
                     .cornerRadius(.infinity)
                 } else {
                     Button("unfollow") {
                         FireUser.unfollowUser(userId: showingUserId)
                         load()
                     }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
                 }
             }
         }

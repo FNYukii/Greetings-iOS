@@ -40,11 +40,7 @@ struct ProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                if showUserId == FireAuth.userId() {
-                    ProfileMenu()
-                } else {
-                    FollowButton(showUserId: showUserId)
-                }
+                ProfileMenu(showUserId: showUserId)
             }
         }
     }

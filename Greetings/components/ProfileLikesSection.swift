@@ -27,6 +27,10 @@ struct ProfileLikesSection: View {
                     PostRow(showPost: post, isNavLinkActive: $isNavLinkActive, openUserId: $openUserId)
                 }
             }
+            
+            NavigationLink(destination: ProfileView(showUserId: openUserId), isActive: $isNavLinkActive) {
+                EmptyView()
+            }
         }
     }
 }

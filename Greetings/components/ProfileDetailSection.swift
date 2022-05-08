@@ -32,6 +32,9 @@ struct ProfileDetailSection: View {
                         .foregroundColor(.secondary)
                 }
                 Spacer()
+                if showUserId != FireAuth.userId() {
+                    FollowButton(showUserId: showUserId)
+                }
             }
             
             Text(isShowUserLoaded ? showUser!.introduction : "---")
@@ -59,7 +62,7 @@ struct ProfileDetailSection: View {
                 }
             }
         }
-        .padding(.horizontal, 8)
+        .padding(.horizontal)
         .onAppear(perform: load)
     }
     
