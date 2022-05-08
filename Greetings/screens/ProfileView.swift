@@ -28,8 +28,7 @@ struct ProfileView: View {
                 
                 if selection == 0 {
                     ProfilePostsSection(postedBy: showUserId)
-                }
-                if selection == 1 {
+                } else {
                     ProfileLikesSection(likedBy: showUserId)
                 }
                 
