@@ -31,26 +31,8 @@ struct ProfileView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if showUserId == FireAuth.userId() {
-                    Menu {
-                        Button(action: {
-                            // TODO: Edit
-                        }) {
-                            Label("edit", systemImage: "square.and.pencil")
-                        }
-                        
-                        Button(action: {
-                            FireAuth.signOut()
-                        }) {
-                            Label("sign-out", systemImage: "rectangle.portrait.and.arrow.right")
-                        }
-                        
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
-                            .font(.title3)
-                    }
-                }
-                
-                if showUserId != FireAuth.userId() {
+                    ProfileMenu()
+                } else {
                     FollowButton(showUserId: showUserId)
                 }
             }

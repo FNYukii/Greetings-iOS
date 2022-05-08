@@ -36,6 +36,7 @@
 		546DD527282796E3005CCBBA /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD526282796E3005CCBBA /* FollowButton.swift */; };
 		546DD52B28279CCC005CCBBA /* ProfileDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD52A28279CCC005CCBBA /* ProfileDetailSection.swift */; };
 		546DD52D28279CE0005CCBBA /* ProfilePostsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD52C28279CE0005CCBBA /* ProfilePostsSection.swift */; };
+		546DD52F2827A1C9005CCBBA /* ProfileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD52E2827A1C9005CCBBA /* ProfileMenu.swift */; };
 		54FECA47282683EC00C09024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA46282683EC00C09024 /* ProfileView.swift */; };
 		54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */; };
 		54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4A282757D400C09024 /* FollowingsView.swift */; };
@@ -70,6 +71,7 @@
 		546DD526282796E3005CCBBA /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
 		546DD52A28279CCC005CCBBA /* ProfileDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailSection.swift; sourceTree = "<group>"; };
 		546DD52C28279CE0005CCBBA /* ProfilePostsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsSection.swift; sourceTree = "<group>"; };
+		546DD52E2827A1C9005CCBBA /* ProfileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenu.swift; sourceTree = "<group>"; };
 		54FECA46282683EC00C09024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsByUserViewModel.swift; sourceTree = "<group>"; };
 		54FECA4A282757D400C09024 /* FollowingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingsView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				546DD526282796E3005CCBBA /* FollowButton.swift */,
 				546DD52A28279CCC005CCBBA /* ProfileDetailSection.swift */,
 				546DD52C28279CE0005CCBBA /* ProfilePostsSection.swift */,
+				546DD52E2827A1C9005CCBBA /* ProfileMenu.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				546DD52B28279CCC005CCBBA /* ProfileDetailSection.swift in Sources */,
 				54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */,
 				54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */,
+				546DD52F2827A1C9005CCBBA /* ProfileMenu.swift in Sources */,
 				54FECA47282683EC00C09024 /* ProfileView.swift in Sources */,
 				542E3442282531EE00D70981 /* WelcomeView.swift in Sources */,
 				542E342B2824D92600D70981 /* FirstView.swift in Sources */,
