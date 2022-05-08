@@ -26,7 +26,12 @@ struct FollowersView: View {
                     .progressViewStyle(CircularProgressViewStyle())
             }
             
-            if isFollowersLoaded {
+            if isFollowersLoaded && followers.isEmpty {
+                Text("no-followers")
+                    .foregroundColor(.secondary)
+            }
+            
+            if isFollowersLoaded && !followers.isEmpty {
                 ScrollView {
                     VStack {
                         ForEach(followers) { user in

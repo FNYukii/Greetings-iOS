@@ -27,7 +27,12 @@ struct FollowingsView: View {
                     .progressViewStyle(CircularProgressViewStyle())
             }
             
-            if isFollowingsLoaded {
+            if isFollowingsLoaded && followings.isEmpty {
+                Text("no-followings")
+                    .foregroundColor(.secondary)
+            }
+            
+            if isFollowingsLoaded && !followings.isEmpty {
                 ScrollView {
                     VStack {
                         ForEach(followings) { user in
