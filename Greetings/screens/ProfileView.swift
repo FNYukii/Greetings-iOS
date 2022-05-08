@@ -24,7 +24,7 @@ struct ProfileView: View {
             VStack(spacing: 0) {
                 ProfileDetailSection(showUserId: showUserId)
                 
-                SlidingTabView(selection: $selection, tabs: ["posts", "likes"])
+                SlidingTabView(selection: $selection, tabs: ["posts", "likes"], inactiveAccentColor: .secondary)
                 
                 if selection == 0 {
                     ProfilePostsSection(postedBy: showUserId)
