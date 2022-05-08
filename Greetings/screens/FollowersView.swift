@@ -55,9 +55,3 @@ struct FollowersView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-
-//struct FollowersView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FollowersView()
-//    }
-//}

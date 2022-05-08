@@ -66,9 +66,3 @@ struct SignUpView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView()
-    }
-}

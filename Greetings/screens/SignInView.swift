@@ -42,9 +42,3 @@ struct SignInView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
-struct SignInView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView()
-    }
-}

@@ -41,9 +41,3 @@ struct CreatePostView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
-//struct CreateView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CreatePostView()
-//    }
-//}

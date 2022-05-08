@@ -59,9 +59,3 @@ struct FirstView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
-//struct FirstView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FirstView()
-//    }
-//}
