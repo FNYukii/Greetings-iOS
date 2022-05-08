@@ -116,6 +116,8 @@ struct ProfileView: View {
                             FireUser.followUser(userId: showUserId)
                             load()
                         }
+                        .buttonStyle(BorderedProminentButtonStyle())
+                        .cornerRadius(.infinity)
                     } else {
                         Button("unfollow") {
                             FireUser.unfollowUser(userId: showUserId)
