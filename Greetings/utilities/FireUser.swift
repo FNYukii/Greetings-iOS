@@ -26,8 +26,36 @@ class FireUser {
     }
     
     static func readFollowings(userId: String, completion: (([User]) -> Void)?) {
+        
+        // followingsフィールドを確認するためにUserドキュメントを取得
         readUser(userId: userId) { user in
-            // TODO: Get Users
+            if let user = user {
+                let followingsIds = user.followings
+                
+                // 誰もフォローしていない場合は空配列を返す
+                if followingsIds.isEmpty {
+                    let users: [User] = []
+                    completion?(users)
+                    return
+                }
+                
+                // フォローしているユーザーのUserドキュメントを取得
+                let db = Firestore.firestore()
+                db.collection("users")
+                    .whereField(FieldPath.documentID(), in: followingsIds)
+                    .getDocuments() { (querySnapshot, err) in
+                        if let err = err {
+                            print("HELLO! Fail! Error reading users: \(err)")
+                        } else {
+                            var users: [User] = []
+                            for document in querySnapshot!.documents {
+                                let user = User(documentSnapshot: document)
+                                users.append(user)
+                            }
+                            completion?(users)
+                        }
+                    }
+            }
         }
     }
     

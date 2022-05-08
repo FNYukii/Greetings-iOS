@@ -7,7 +7,7 @@
 
 import Firebase
 
-struct User {
+struct User: Identifiable {
     let id: String
     let userName: String
     let displayName: String

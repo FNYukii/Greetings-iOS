@@ -11,13 +11,32 @@ struct FollowingsView: View {
     
     private let showUserId: String
     
+    @State private var followings: [User] = []
+    @State private var isFollowingsLoaded = false
+    
     init(showUserId: String) {
         self.showUserId = showUserId
     }
     
     var body: some View {
-        List {
-            
+        
+        ScrollView {
+            VStack {
+                ForEach(followings) { user in
+                    Text("\(user.id)")
+                }
+            }
+        }
+        
+        .onAppear {
+            if !isFollowingsLoaded {
+                FireUser.readFollowings(userId: showUserId) { users in
+                    withAnimation {
+                        self.followings = users
+                        self.isFollowingsLoaded = true
+                    }
+                }
+            }
         }
         
         .navigationTitle("followings")
