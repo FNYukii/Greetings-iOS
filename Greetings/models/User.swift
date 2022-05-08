@@ -15,12 +15,12 @@ struct User {
     let icon: String?
     let followings: [String]
     
-    init(document: DocumentSnapshot) {
-        self.id = document.documentID
-        self.userName = document.get("userName") as! String
-        self.displayName = document.get("displayName") as! String
-        self.introduction = document.get("introduction") as! String
-        self.icon = document.get("icon") as? String
-        self.followings = document.get("followings") as! [String]
+    init(documentSnapshot: DocumentSnapshot) {
+        self.id = documentSnapshot.documentID
+        self.userName = documentSnapshot.get("userName") as! String
+        self.displayName = documentSnapshot.get("displayName") as! String
+        self.introduction = documentSnapshot.get("introduction") as! String
+        self.icon = documentSnapshot.get("icon") as? String
+        self.followings = documentSnapshot.get("followings") as! [String]
     }
 }

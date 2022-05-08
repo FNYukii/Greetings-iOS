@@ -9,14 +9,13 @@ import Firebase
 
 class FireUser {
     
-    // idからUserを取得して返す。Userが存在しなければnilを返す。
     static func readUser(userId: String, completion: ((User?) -> Void)?) {
         let db = Firestore.firestore()
         db.collection("users")
             .document(userId)
             .getDocument { (document, error) in
                 if let document = document, document.exists {
-                    let user = User(document: document)
+                    let user = User(documentSnapshot: document)
                     print("HELLO! Success! userId: \(userId), displayName: \(user.displayName)")
                     completion?(user)
                 } else {
@@ -26,8 +25,10 @@ class FireUser {
             }
     }
     
-    static func readFollowings() {
-        
+    static func readFollowings(userId: String, completion: (([User]) -> Void)?) {
+        readUser(userId: userId) { user in
+            // TODO: Get Users
+        }
     }
     
     static func readFollowers(userId: String, completion: (([User]) -> Void)?) {
@@ -40,7 +41,7 @@ class FireUser {
                 } else {
                     var users: [User] = []
                     for document in querySnapshot!.documents {
-                        let user = User(document: document)
+                        let user = User(documentSnapshot: document)
                         users.append(user)
                     }
                     completion?(users)
