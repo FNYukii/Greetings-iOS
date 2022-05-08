@@ -12,11 +12,11 @@ struct ProfileDetailSection: View {
     private let showUserId: String
     @State private var showUser: User? = nil
     @State private var isShowUserLoaded = false
-    @State private var followersCount: Int? = nil
-    @State private var isFollowersCountLoaded = false
+    @ObservedObject private var followersCountViewModel: FollowersCountViewModel
     
     init(showUserId: String) {
         self.showUserId = showUserId
+        self.followersCountViewModel = FollowersCountViewModel(userId: showUserId)
     }
     
     var body: some View {
@@ -49,8 +49,13 @@ struct ProfileDetailSection: View {
                 .padding(.trailing)
                 
                 NavigationLink(destination: FollowersView(showUserId: showUserId)) {
-                    Text(isFollowersCountLoaded ? "\(followersCount!)" : "-")
-                        .foregroundColor(.primary)
+                    if !followersCountViewModel.isLoaded {
+                        Text("-")
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text("\(followersCountViewModel.followersCount)")
+                            .foregroundColor(.secondary)
+                    }
                     Text("followers")
                         .foregroundColor(.secondary)
                 }
@@ -69,12 +74,6 @@ struct ProfileDetailSection: View {
                     self.showUser = user
                     self.isShowUserLoaded = true
                 }
-            }
-        }
-        FireUser.readFollowers(userId: showUserId) { users in
-            withAnimation {
-                self.followersCount = users.count
-                self.isFollowersCountLoaded = true
             }
         }
     }
