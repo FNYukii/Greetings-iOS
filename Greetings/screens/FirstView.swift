@@ -18,7 +18,7 @@ struct FirstView: View {
             ScrollView {
                 VStack {
                     ForEach(postViewModel.posts) { post in
-                        PostRow(post: post)
+                        PostRow(showPost: post)
                     }
                 }
             }

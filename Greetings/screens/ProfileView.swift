@@ -63,7 +63,7 @@ struct ProfileView: View {
                         .progressViewStyle(CircularProgressViewStyle())
                 } else {
                     ForEach(posts) { post in
-                        PostRow(post: post, isNavLinkDisable: true)
+                        PostRow(showPost: post, isNavLinkDisable: true)
                             .listRowSeparator(.hidden)
                     }
                 }

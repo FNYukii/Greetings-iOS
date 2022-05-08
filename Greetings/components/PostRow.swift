@@ -9,14 +9,14 @@ import SwiftUI
 
 struct PostRow: View {
     
-    private let post: Post
+    private let showPost: Post
     private let isNavLinkDisable: Bool
     
     @State private var postUser: User? = nil
     @State private var isPostUserLoaded = false
     
-    init(post: Post, isNavLinkDisable: Bool = false) {
-        self.post = post
+    init(showPost: Post, isNavLinkDisable: Bool = false) {
+        self.showPost = showPost
         self.isNavLinkDisable = isNavLinkDisable
     }
     
@@ -24,7 +24,7 @@ struct PostRow: View {
         VStack {
             HStack(alignment: .top) {
                 
-                NavigationLink(destination: ProfileView(showUserId: post.userId)) {
+                NavigationLink(destination: ProfileView(showUserId: showPost.userId)) {
                     Image(systemName: "person.crop.circle")
                         .font(.largeTitle)
                         .foregroundColor(.secondary)
@@ -41,15 +41,15 @@ struct PostRow: View {
                             .foregroundColor(.secondary)
                             .lineLimit(1)
                         
-                        HowManyAgoText(from: post.createdAt)
+                        HowManyAgoText(from: showPost.createdAt)
                             .foregroundColor(.secondary)
                         
                         Spacer()
                         
                         Menu {
-                            if post.userId == FireAuth.userId() {
+                            if showPost.userId == FireAuth.userId() {
                                 Button(role: .destructive){
-                                    FirePost.deletePost(postId: post.id)
+                                    FirePost.deletePost(postId: showPost.id)
                                 } label: {
                                     Label("delete-post", systemImage: "trash")
                                 }
@@ -78,17 +78,17 @@ struct PostRow: View {
                         
                     }
                     
-                    Text(post.text)
+                    Text(showPost.text)
                     
                     HStack(spacing: 0) {
                         Button(action: {
-                            if !post.likedUsers.contains(FireAuth.userId()) {
-                                FirePost.likePost(postId: post.id)
+                            if !showPost.likedUsers.contains(FireAuth.userId()) {
+                                FirePost.likePost(postId: showPost.id)
                             } else {
-                                FirePost.unlikePost(postId: post.id)
+                                FirePost.unlikePost(postId: showPost.id)
                             }
                         }) {
-                            if !post.likedUsers.contains(FireAuth.userId()) {
+                            if !showPost.likedUsers.contains(FireAuth.userId()) {
                                 Image(systemName: "heart")
                                     .foregroundColor(.secondary)
                             } else {
@@ -97,8 +97,8 @@ struct PostRow: View {
                             }
                         }
                         
-                        Text("\(post.likedUsers.count)")
-                            .foregroundColor(post.likedUsers.contains(FireAuth.userId()) ? .red : .secondary)
+                        Text("\(showPost.likedUsers.count)")
+                            .foregroundColor(showPost.likedUsers.contains(FireAuth.userId()) ? .red : .secondary)
                             .font(.callout)
                             .padding(.leading, 4)
                     }
@@ -113,7 +113,7 @@ struct PostRow: View {
     }
     
     private func load() {
-        FireUser.readUser(userId: post.userId) { user in
+        FireUser.readUser(userId: showPost.userId) { user in
             if let user = user {
                 withAnimation {
                     self.postUser = user
