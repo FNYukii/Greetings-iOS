@@ -33,6 +33,7 @@ struct CreatePostView: View {
                         dismiss()
                     }) {
                         Text("publish")
+                            .fontWeight(.bold)
                     }
                 }
             }
@@ -41,8 +42,8 @@ struct CreatePostView: View {
     }
 }
 
-struct CreateView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreatePostView()
-    }
-}
+//struct CreateView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreatePostView()
+//    }
+//}

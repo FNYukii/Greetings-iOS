@@ -49,13 +49,20 @@ struct ProfileView: View {
                     .padding(.vertical, 4)
                 
                 HStack {
-                    Text(isShowUserLoaded ? "\(showUser!.followings.count)" : "-")
-                    Text("followings")
-                        .foregroundColor(.secondary)
-                        .padding(.trailing)
-                    Text(isFollowersLoaded ? "\(self.followers.count)" : "-")
-                    Text("followers")
-                        .foregroundColor(.secondary)
+                    NavigationLink(destination: FollowingsView(showUserId: showUserId)) {
+                        Text(isShowUserLoaded ? "\(showUser!.followings.count)" : "-")
+                            .foregroundColor(.primary)
+                        Text("followings")
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.trailing)
+                    
+                    NavigationLink(destination: FollowersView(showUserId: showUserId)) {
+                        Text(isFollowersLoaded ? "\(self.followers.count)" : "-")
+                            .foregroundColor(.primary)
+                        Text("followers")
+                            .foregroundColor(.secondary)
+                    }
                 }
                 .padding(.horizontal)
                 
@@ -109,6 +116,8 @@ struct ProfileView: View {
                             FireUser.followUser(userId: showUserId)
                             load()
                         }
+                        .buttonStyle(BorderedProminentButtonStyle())
+                        .cornerRadius(.infinity)
                     } else {
                         Button("unfollow") {
                             FireUser.unfollowUser(userId: showUserId)

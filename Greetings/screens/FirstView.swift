@@ -37,8 +37,10 @@ struct FirstView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("new") {
+                    Button(action :{
                         isShowSheet.toggle()
+                    }) {
+                        Image(systemName: "plus")
                     }
                 }
             }
