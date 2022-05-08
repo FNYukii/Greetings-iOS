@@ -20,6 +20,9 @@ struct ProfileView: View {
     @State private var isCurrentUserLoaded = false
     @State private var isFollowersLoaded = false
     
+    @State private var isNavLinkActive = false
+    @State private var openUserId = ""
+    
     init(showUserId: String) {
         self.showUserId = showUserId
         self.postsByUserViewModel = PostsByUserViewModel(userId: showUserId)
@@ -73,7 +76,7 @@ struct ProfileView: View {
                         .progressViewStyle(CircularProgressViewStyle())
                 } else {
                     ForEach(postsByUserViewModel.posts) { post in
-                        PostRow(showPost: post, isNavLinkDisable: true)
+                        PostRow(showPost: post, isNavLinkDisable: true, isNavLinkActive: $isNavLinkActive, openUserId: $openUserId)
                             .listRowSeparator(.hidden)
                     }
                 }

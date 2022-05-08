@@ -13,6 +13,9 @@ struct FirstView: View {
     
     @State private var isShowSheet = false
     
+    @State private var isNavLinkActive = false
+    @State private var openUserId = ""
+    
     init() {
         postsViewModel = PostsForFeedViewModel(userId: FireAuth.userId())
     }
@@ -22,7 +25,11 @@ struct FirstView: View {
             ScrollView {
                 VStack {
                     ForEach(postsViewModel.posts) { post in
-                        PostRow(showPost: post)
+                        PostRow(showPost: post, isNavLinkActive: $isNavLinkActive, openUserId: $openUserId)
+                    }
+                    
+                    NavigationLink(destination: ProfileView(showUserId: openUserId), isActive: $isNavLinkActive) {
+                        EmptyView()
                     }
                 }
             }
