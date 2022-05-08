@@ -33,7 +33,7 @@ struct EditProfileView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action :{
-                        // TODO: Update user
+                        FireUser.updateMyUser(userName: userName, displayName: displayName, introduction: introduction, icon: nil)
                         dismiss()
                     }) {
                         Text("done")
