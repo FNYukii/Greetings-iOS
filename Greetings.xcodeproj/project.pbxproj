@@ -37,6 +37,7 @@
 		54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */; };
 		54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4A282757D400C09024 /* FollowingsView.swift */; };
 		54FECA4D282757DE00C09024 /* FollowersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4C282757DE00C09024 /* FollowersView.swift */; };
+		54FECA4F2827632500C09024 /* UserRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4E2827632500C09024 /* UserRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsByUserViewModel.swift; sourceTree = "<group>"; };
 		54FECA4A282757D400C09024 /* FollowingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingsView.swift; sourceTree = "<group>"; };
 		54FECA4C282757DE00C09024 /* FollowersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersView.swift; sourceTree = "<group>"; };
+		54FECA4E2827632500C09024 /* UserRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				542E34342824F7A100D70981 /* PostRow.swift */,
+				54FECA4E2827632500C09024 /* UserRow.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				542E344E28253A1F00D70981 /* Post.swift in Sources */,
 				542E345228253DB900D70981 /* FirePost.swift in Sources */,
 				542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */,
+				54FECA4F2827632500C09024 /* UserRow.swift in Sources */,
 				542E342F2824D93900D70981 /* ThirdView.swift in Sources */,
 				54FECA4D282757DE00C09024 /* FollowersView.swift in Sources */,
 				54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */,

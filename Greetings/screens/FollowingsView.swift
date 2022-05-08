@@ -23,7 +23,7 @@ struct FollowingsView: View {
         ScrollView {
             VStack {
                 ForEach(followings) { user in
-                    Text("\(user.id)")
+                    UserRow(showUser: user)
                 }
             }
         }
