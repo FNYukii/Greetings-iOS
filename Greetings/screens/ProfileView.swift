@@ -27,10 +27,10 @@ struct ProfileView: View {
                 SlidingTabView(selection: $selection, tabs: ["posts", "likes"])
                 
                 if selection == 0 {
-                    ProfilePostsSection(showingUserId: showUserId)
+                    ProfilePostsSection(postedBy: showUserId)
                 }
                 if selection == 1 {
-                    Text("likes here")
+                    ProfileLikesSection(likedBy: showUserId)
                 }
                 
             }

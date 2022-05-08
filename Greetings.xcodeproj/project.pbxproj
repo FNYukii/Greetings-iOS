@@ -39,6 +39,8 @@
 		546DD52F2827A1C9005CCBBA /* ProfileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD52E2827A1C9005CCBBA /* ProfileMenu.swift */; };
 		546DD5312827AAFC005CCBBA /* FollowersCountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD5302827AAFC005CCBBA /* FollowersCountViewModel.swift */; };
 		546DD5342827C74D005CCBBA /* SlidingTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 546DD5332827C74D005CCBBA /* SlidingTabView */; };
+		546DD5362827CA05005CCBBA /* ProfileLikesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD5352827CA05005CCBBA /* ProfileLikesSection.swift */; };
+		546DD5382827CA2A005CCBBA /* PostsLikedByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD5372827CA2A005CCBBA /* PostsLikedByUserViewModel.swift */; };
 		54FECA47282683EC00C09024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA46282683EC00C09024 /* ProfileView.swift */; };
 		54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */; };
 		54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4A282757D400C09024 /* FollowingsView.swift */; };
@@ -75,6 +77,8 @@
 		546DD52C28279CE0005CCBBA /* ProfilePostsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsSection.swift; sourceTree = "<group>"; };
 		546DD52E2827A1C9005CCBBA /* ProfileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenu.swift; sourceTree = "<group>"; };
 		546DD5302827AAFC005CCBBA /* FollowersCountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersCountViewModel.swift; sourceTree = "<group>"; };
+		546DD5352827CA05005CCBBA /* ProfileLikesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLikesSection.swift; sourceTree = "<group>"; };
+		546DD5372827CA2A005CCBBA /* PostsLikedByUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsLikedByUserViewModel.swift; sourceTree = "<group>"; };
 		54FECA46282683EC00C09024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsByUserViewModel.swift; sourceTree = "<group>"; };
 		54FECA4A282757D400C09024 /* FollowingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingsView.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 				546DD526282796E3005CCBBA /* FollowButton.swift */,
 				546DD52A28279CCC005CCBBA /* ProfileDetailSection.swift */,
 				546DD52C28279CE0005CCBBA /* ProfilePostsSection.swift */,
+				546DD5352827CA05005CCBBA /* ProfileLikesSection.swift */,
 				546DD52E2827A1C9005CCBBA /* ProfileMenu.swift */,
 			);
 			path = components;
@@ -178,6 +183,7 @@
 				542E343F282531CE00D70981 /* SignInStateViewModel.swift */,
 				542E34532825414A00D70981 /* PostsForFeedViewModel.swift */,
 				54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */,
+				546DD5372827CA2A005CCBBA /* PostsLikedByUserViewModel.swift */,
 				546DD5302827AAFC005CCBBA /* FollowersCountViewModel.swift */,
 			);
 			path = viewModels;
@@ -305,8 +311,10 @@
 				54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */,
 				546DD52F2827A1C9005CCBBA /* ProfileMenu.swift in Sources */,
 				54FECA47282683EC00C09024 /* ProfileView.swift in Sources */,
+				546DD5362827CA05005CCBBA /* ProfileLikesSection.swift in Sources */,
 				542E3442282531EE00D70981 /* WelcomeView.swift in Sources */,
 				542E342B2824D92600D70981 /* FirstView.swift in Sources */,
+				546DD5382827CA2A005CCBBA /* PostsLikedByUserViewModel.swift in Sources */,
 				542E345A282660E100D70981 /* SignUpView.swift in Sources */,
 				542E342D2824D92F00D70981 /* SecondView.swift in Sources */,
 				542E34332824DC9F00D70981 /* CreatePostView.swift in Sources */,

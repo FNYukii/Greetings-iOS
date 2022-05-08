@@ -13,8 +13,8 @@ struct ProfilePostsSection: View {
     @State private var isNavLinkActive = false
     @State private var openUserId = ""
 
-    init(showingUserId: String) {
-        self.postsByUserViewModel = PostsByUserViewModel(userId: showingUserId)
+    init(postedBy: String) {
+        self.postsByUserViewModel = PostsByUserViewModel(userId: postedBy)
     }
     
     var body: some View {
