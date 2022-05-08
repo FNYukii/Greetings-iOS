@@ -51,10 +51,10 @@ struct ProfileDetailSection: View {
                 NavigationLink(destination: FollowersView(showUserId: showUserId)) {
                     if !followersCountViewModel.isLoaded {
                         Text("-")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.primary)
                     } else {
                         Text("\(followersCountViewModel.followersCount)")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.primary)
                     }
                     Text("followers")
                         .foregroundColor(.secondary)
