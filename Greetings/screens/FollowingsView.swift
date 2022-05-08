@@ -39,12 +39,10 @@ struct FollowingsView: View {
         }
         
         .onAppear {
-            if !isFollowingsLoaded {
-                FireUser.readFollowings(userId: showUserId) { users in
-                    withAnimation {
-                        self.followings = users
-                        self.isFollowingsLoaded = true
-                    }
+            FireUser.readFollowings(userId: showUserId) { users in
+                withAnimation {
+                    self.followings = users
+                    self.isFollowingsLoaded = true
                 }
             }
         }
