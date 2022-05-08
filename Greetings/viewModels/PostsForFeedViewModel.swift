@@ -15,12 +15,26 @@ class PostsForFeedViewModel: ObservableObject {
     
     init(userId: String) {
         
-        FireUser.readUser(userId: userId) { user in
-            if let user = user {
-                let followingIds = user.followings
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(userId)
+            .addSnapshotListener { documentSnapshot, error in
                 
-                if followingIds.isEmpty {
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
                     return
+                }
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                
+                print("Current data: \(data)")
+                let user = User(documentSnapshot: document)
+                
+                var followingIds = user.followings
+                if followingIds.isEmpty {
+                    followingIds.append("ididid")
                 }
                 
                 let db = Firestore.firestore()
@@ -45,8 +59,9 @@ class PostsForFeedViewModel: ObservableObject {
                             self.isLoaded = true
                         }
                     }
+                
+                
             }
-        }
     }
     
 }
