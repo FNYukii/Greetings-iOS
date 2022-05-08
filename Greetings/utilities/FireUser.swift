@@ -129,6 +129,24 @@ class FireUser {
             }
     }
     
+    static func updateMyUser(userName: String, displayName: String, introduction: String, icon: String?) {
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(FireAuth.userId())
+            .updateData([
+                "userName": userName,
+                "displayName": displayName,
+                "introduction": introduction,
+                "icon": icon as Any
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating User. Error: \(err)")
+                } else {
+                    print("HELLO! Success! User successfully updated.")
+                }
+            }
+    }
+    
     static func deleteUser() {
         
     }

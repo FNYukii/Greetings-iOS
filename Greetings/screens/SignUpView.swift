@@ -14,8 +14,8 @@ struct SignUpView: View {
     @State private var email = ""
     @State private var password = ""
     
-    @State private var userName = ""
     @State private var displayName = ""
+    @State private var userName = ""
     @State private var introduction = ""
     
     var body: some View {
@@ -27,17 +27,9 @@ struct SignUpView: View {
                     TextField("password", text: $password)
                 }
                 Section {
-                    TextField("user-name", text: $userName)
                     TextField("display-name", text: $displayName)
-                    ZStack(alignment: .topLeading) {
-                        TextEditor(text: $introduction)
-                            .frame(minHeight: 80)
-                        Text("introduction")
-                            .foregroundColor(Color(UIColor.placeholderText))
-                            .opacity(introduction.isEmpty ? 1 : 0)
-                            .padding(.top, 8)
-                            .padding(.leading, 5)
-                    }
+                    TextField("user-name", text: $userName)
+                    MyTextEditor(hint: "introduction", text: $introduction)
                 }
             }
             
