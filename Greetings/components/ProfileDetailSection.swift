@@ -32,6 +32,7 @@ struct ProfileDetailSection: View {
                         .foregroundColor(.secondary)
                 }
                 Spacer()
+                FollowButton(showUserId: showUserId)
             }
             
             Text(isShowUserLoaded ? showUser!.introduction : "---")
