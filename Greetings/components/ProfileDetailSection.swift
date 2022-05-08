@@ -60,9 +60,7 @@ struct ProfileDetailSection: View {
                         .foregroundColor(.secondary)
                 }
             }
-            .padding(.horizontal)
-            
-            Divider()
+            .padding(.horizontal)            
         }
         .onAppear(perform: load)
     }

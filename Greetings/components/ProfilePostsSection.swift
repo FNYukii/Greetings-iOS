@@ -18,13 +18,15 @@ struct ProfilePostsSection: View {
     }
     
     var body: some View {
-        if !postsByUserViewModel.isLoaded {
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-        } else {
-            ForEach(postsByUserViewModel.posts) { post in
-                PostRow(showPost: post, isNavLinkDisable: true, isNavLinkActive: $isNavLinkActive, openUserId: $openUserId)
-                    .listRowSeparator(.hidden)
+        VStack {
+            if !postsByUserViewModel.isLoaded {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+            } else {
+                ForEach(postsByUserViewModel.posts) { post in
+                    PostRow(showPost: post, isNavLinkDisable: true, isNavLinkActive: $isNavLinkActive, openUserId: $openUserId)
+                        .listRowSeparator(.hidden)
+                }
             }
         }
     }
