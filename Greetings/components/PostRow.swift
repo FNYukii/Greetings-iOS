@@ -109,14 +109,15 @@ struct PostRow: View {
         }
         .padding(.horizontal)
         
-        .onAppear {
-            let userId = post.userId
-            FireUser.readUser(userId: userId) { user in
-                if let user = user {
-                    withAnimation {
-                        self.postUser = user
-                        self.isPostUserLoaded = true
-                    }
+        .onAppear(perform: load)
+    }
+    
+    private func load() {
+        FireUser.readUser(userId: post.userId) { user in
+            if let user = user {
+                withAnimation {
+                    self.postUser = user
+                    self.isPostUserLoaded = true
                 }
             }
         }
