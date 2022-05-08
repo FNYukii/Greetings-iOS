@@ -13,6 +13,8 @@ struct ProfileMenu: View {
     @State private var showUser: User? = nil
     @State private var isShowUserLoaded = false
     
+    @State private var isShowSheet = false
+    
     init(showUserId: String) {
         self.showUserId = showUserId
     }
@@ -37,7 +39,7 @@ struct ProfileMenu: View {
             // 自分のプロフィールを表示している場合
             if showUserId == FireAuth.userId() {
                 Button(action: {
-                    // TODO: Open EditProfileView
+                    isShowSheet.toggle()
                 }) {
                     Label("edit-profile", systemImage: "square.and.pencil")
                 }
@@ -54,6 +56,10 @@ struct ProfileMenu: View {
                 .foregroundColor(.secondary)
         }
         .onAppear(perform: load)
+        
+        .sheet(isPresented: $isShowSheet) {
+            EditProfileView()
+        }
     }
     
     private func load() {
