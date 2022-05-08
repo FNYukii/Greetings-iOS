@@ -36,6 +36,11 @@ struct ProfileMenu: View {
             
             // 自分のプロフィールを表示している場合
             if showUserId == FireAuth.userId() {
+                Button(action: {
+                    // TODO: Open EditProfileView
+                }) {
+                    Label("edit-profile", systemImage: "square.and.pencil")
+                }
                 Button(role: .destructive) {
                     FireAuth.signOut()
                 } label: {

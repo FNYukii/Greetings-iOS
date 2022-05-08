@@ -32,7 +32,9 @@ struct ProfileDetailSection: View {
                         .foregroundColor(.secondary)
                 }
                 Spacer()
-                FollowButton(showUserId: showUserId)
+                if showUserId != FireAuth.userId() {
+                    FollowButton(showUserId: showUserId)
+                }
             }
             
             Text(isShowUserLoaded ? showUser!.introduction : "---")
