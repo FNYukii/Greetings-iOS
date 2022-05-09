@@ -20,28 +20,28 @@ struct EditProfileView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                
-                Section {
-                    
+            
+            VStack(alignment: .leading) {
+                Button(action: {
+                    isShowImagePicker.toggle()
+                }) {
                     if let image = image {
                         Image(uiImage: image)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
                     } else {
                         Image(systemName: "person.crop.circle")
-                    } 
-                    
-                    Button("pick") {
-                        isShowImagePicker.toggle()
+                            .resizable()
+                            .frame(width: 50, height: 50)
                     }
-                    
                 }
                 
                 TextField("display-name", text: $displayName)
                 TextField("user-name", text: $userName)
                 MyTextEditor(hint: "introduction", text: $introduction)
             }
+            .padding()
             
             .navigationTitle("edit-profile")
             .navigationBarTitleDisplayMode(.inline)
