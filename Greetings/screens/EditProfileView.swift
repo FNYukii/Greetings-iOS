@@ -22,24 +22,38 @@ struct EditProfileView: View {
         NavigationView {
             
             VStack(alignment: .leading) {
-                Button(action: {
-                    isShowImagePicker.toggle()
-                }) {
-                    if let image = image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                    } else {
-                        Image(systemName: "person.crop.circle")
-                            .resizable()
-                            .frame(width: 50, height: 50)
+                HStack(alignment: .bottom) {
+                    Button(action: {
+                        isShowImagePicker.toggle()
+                    }) {
+                        if let image = image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .clipShape(Circle())
+                        } else {
+                            Image(systemName: "person.crop.circle")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.secondary)
+                        }
                     }
+                    
+                    VStack {
+                        TextField("display-name", text: $displayName)
+                        Divider()
+                    }
+                    
+                    Spacer()
                 }
                 
-                TextField("display-name", text: $displayName)
                 TextField("user-name", text: $userName)
+                Divider()
+                
                 MyTextEditor(hint: "introduction", text: $introduction)
+                    .frame(height: 200)
+                
+                Spacer()
             }
             .padding()
             
