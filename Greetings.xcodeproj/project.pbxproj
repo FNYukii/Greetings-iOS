@@ -44,6 +44,7 @@
 		546DD53A2827F865005CCBBA /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD5392827F865005CCBBA /* EditProfileView.swift */; };
 		546DD53C28280309005CCBBA /* MyTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD53B28280309005CCBBA /* MyTextEditor.swift */; };
 		546DD53E2828070A005CCBBA /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD53D2828070A005CCBBA /* UserViewModel.swift */; };
+		546DD5402828ECC9005CCBBA /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD53F2828ECC9005CCBBA /* ImagePickerView.swift */; };
 		54FECA47282683EC00C09024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA46282683EC00C09024 /* ProfileView.swift */; };
 		54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */; };
 		54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4A282757D400C09024 /* FollowingsView.swift */; };
@@ -85,6 +86,7 @@
 		546DD5392827F865005CCBBA /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		546DD53B28280309005CCBBA /* MyTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextEditor.swift; sourceTree = "<group>"; };
 		546DD53D2828070A005CCBBA /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		546DD53F2828ECC9005CCBBA /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		54FECA46282683EC00C09024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsByUserViewModel.swift; sourceTree = "<group>"; };
 		54FECA4A282757D400C09024 /* FollowingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingsView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				542E34322824DC9F00D70981 /* CreatePostView.swift */,
 				54FECA46282683EC00C09024 /* ProfileView.swift */,
 				546DD5392827F865005CCBBA /* EditProfileView.swift */,
+				546DD53F2828ECC9005CCBBA /* ImagePickerView.swift */,
 				54FECA4A282757D400C09024 /* FollowingsView.swift */,
 				54FECA4C282757DE00C09024 /* FollowersView.swift */,
 				542E3459282660E100D70981 /* SignUpView.swift */,
@@ -320,6 +323,7 @@
 				546DD52B28279CCC005CCBBA /* ProfileDetailSection.swift in Sources */,
 				54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */,
 				54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */,
+				546DD5402828ECC9005CCBBA /* ImagePickerView.swift in Sources */,
 				546DD52F2827A1C9005CCBBA /* ProfileMenu.swift in Sources */,
 				54FECA47282683EC00C09024 /* ProfileView.swift in Sources */,
 				546DD5362827CA05005CCBBA /* ProfileLikesSection.swift in Sources */,
