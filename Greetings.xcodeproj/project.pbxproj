@@ -45,6 +45,7 @@
 		546DD53C28280309005CCBBA /* MyTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD53B28280309005CCBBA /* MyTextEditor.swift */; };
 		546DD53E2828070A005CCBBA /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD53D2828070A005CCBBA /* UserViewModel.swift */; };
 		546DD5402828ECC9005CCBBA /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD53F2828ECC9005CCBBA /* ImagePickerView.swift */; };
+		546DD542282937CF005CCBBA /* FireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD541282937CF005CCBBA /* FireImage.swift */; };
 		54FECA47282683EC00C09024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA46282683EC00C09024 /* ProfileView.swift */; };
 		54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */; };
 		54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4A282757D400C09024 /* FollowingsView.swift */; };
@@ -87,6 +88,7 @@
 		546DD53B28280309005CCBBA /* MyTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextEditor.swift; sourceTree = "<group>"; };
 		546DD53D2828070A005CCBBA /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		546DD53F2828ECC9005CCBBA /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		546DD541282937CF005CCBBA /* FireImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireImage.swift; sourceTree = "<group>"; };
 		54FECA46282683EC00C09024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsByUserViewModel.swift; sourceTree = "<group>"; };
 		54FECA4A282757D400C09024 /* FollowingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingsView.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				542E344B2825361D00D70981 /* FireAuth.swift */,
 				542E345128253DB900D70981 /* FirePost.swift */,
 				542E3455282542E100D70981 /* FireUser.swift */,
+				546DD541282937CF005CCBBA /* FireImage.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				542E34352824F7A100D70981 /* PostRow.swift in Sources */,
 				542E344C2825361D00D70981 /* FireAuth.swift in Sources */,
 				542E344E28253A1F00D70981 /* Post.swift in Sources */,
+				546DD542282937CF005CCBBA /* FireImage.swift in Sources */,
 				542E345228253DB900D70981 /* FirePost.swift in Sources */,
 				542E3440282531CE00D70981 /* SignInStateViewModel.swift in Sources */,
 				54FECA4F2827632500C09024 /* UserRow.swift in Sources */,

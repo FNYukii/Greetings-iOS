@@ -22,7 +22,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let image = info[.originalImage] as? UIImage {
-                parent.image = image
+                parent.image = FireImage.toSquare(from: image)
             }
             parent.presentationMode.wrappedValue.dismiss()
         }

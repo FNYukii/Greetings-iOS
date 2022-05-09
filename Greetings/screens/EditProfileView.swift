@@ -35,6 +35,7 @@ struct EditProfileView: View {
                     Button("pick") {
                         isShowImagePicker.toggle()
                     }
+                    
                 }
                 
                 TextField("display-name", text: $displayName)
