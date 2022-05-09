@@ -15,9 +15,29 @@ struct EditProfileView: View {
     @State private var userName = ""
     @State private var introduction = ""
     
+    @State private var isShowImagePicker = false
+    @State private var image: UIImage? = nil
+    
     var body: some View {
         NavigationView {
             Form {
+                
+                Section {
+                    
+                    if let image = image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } else {
+                        Image(systemName: "person.crop.circle")
+                    } 
+                    
+                    Button("pick") {
+                        isShowImagePicker.toggle()
+                    }
+                    
+                }
+                
                 TextField("display-name", text: $displayName)
                 TextField("user-name", text: $userName)
                 MyTextEditor(hint: "introduction", text: $introduction)
@@ -44,6 +64,10 @@ struct EditProfileView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: load)
+        
+        .sheet(isPresented: $isShowImagePicker) {
+            ImagePickerView(image: $image)
+        }
     }
     
     private func load() {
