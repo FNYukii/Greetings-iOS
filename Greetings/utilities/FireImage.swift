@@ -7,11 +7,11 @@
 
 import Foundation
 import UIKit
+import FirebaseStorage
 
 class FireImage {
     
     static func toSquare(from: UIImage) -> UIImage {
-        
         var image = from
         
         var oneSide: CGFloat = 0
@@ -33,6 +33,16 @@ class FireImage {
         UIGraphicsEndImageContext()
         
         return image
+    }
+    
+    static func uploadImage(image: UIImage) {
+        let data = image.pngData()!
+
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let imageRef = storageRef.child("images/icon.png")
+        
+        imageRef.putData(data, metadata: nil)
     }
     
 }
