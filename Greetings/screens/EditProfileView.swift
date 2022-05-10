@@ -10,6 +10,7 @@ import SwiftUI
 struct EditProfileView: View {
     
     @Environment(\.dismiss) private var dismiss
+    private let iconSide: CGFloat = 60
 
     @State private var displayName = ""
     @State private var userName = ""
@@ -20,28 +21,44 @@ struct EditProfileView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                
-                Section {
-                    
-                    if let image = image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } else {
-                        Image(systemName: "person.crop.circle")
-                    } 
-                    
-                    Button("pick") {
+            
+            VStack(alignment: .leading) {
+                HStack(alignment: .top) {
+                    Button(action: {
                         isShowImagePicker.toggle()
+                    }) {
+                        if let image = image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: iconSide, height: iconSide)
+                                .clipShape(Circle())
+                        } else {
+                            Image(systemName: "person.crop.circle")
+                                .resizable()
+                                .frame(width: iconSide, height: iconSide)
+                                .foregroundColor(.secondary)
+                        }
                     }
                     
+                    VStack {
+                        TextField("display-name", text: $displayName)
+                        Divider()
+                        
+                        TextField("user-name", text: $userName)
+                            .padding(.top, 4)
+                        Divider()
+                    }
+                    
+                    Spacer()
                 }
                 
-                TextField("display-name", text: $displayName)
-                TextField("user-name", text: $userName)
                 MyTextEditor(hint: "introduction", text: $introduction)
+                    .frame(height: 150)
+                Divider()
+                
+                Spacer()
             }
+            .padding()
             
             .navigationTitle("edit-profile")
             .navigationBarTitleDisplayMode(.inline)
