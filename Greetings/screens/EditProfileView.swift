@@ -10,6 +10,7 @@ import SwiftUI
 struct EditProfileView: View {
     
     @Environment(\.dismiss) private var dismiss
+    private let iconSide: CGFloat = 60
 
     @State private var displayName = ""
     @State private var userName = ""
@@ -22,19 +23,19 @@ struct EditProfileView: View {
         NavigationView {
             
             VStack(alignment: .leading) {
-                HStack(alignment: .bottom) {
+                HStack(alignment: .top) {
                     Button(action: {
                         isShowImagePicker.toggle()
                     }) {
                         if let image = image {
                             Image(uiImage: image)
                                 .resizable()
-                                .frame(width: 50, height: 50)
+                                .frame(width: iconSide, height: iconSide)
                                 .clipShape(Circle())
                         } else {
                             Image(systemName: "person.crop.circle")
                                 .resizable()
-                                .frame(width: 50, height: 50)
+                                .frame(width: iconSide, height: iconSide)
                                 .foregroundColor(.secondary)
                         }
                     }
@@ -42,16 +43,17 @@ struct EditProfileView: View {
                     VStack {
                         TextField("display-name", text: $displayName)
                         Divider()
+                        
+                        TextField("user-name", text: $userName)
+                        Divider()
                     }
                     
                     Spacer()
                 }
                 
-                TextField("user-name", text: $userName)
-                Divider()
-                
                 MyTextEditor(hint: "introduction", text: $introduction)
-                    .frame(height: 200)
+                    .frame(height: 150)
+                Divider()
                 
                 Spacer()
             }
