@@ -35,4 +35,9 @@ class ImageEditor {
         
         return image
     }
+    
+    static func toSmall(image: UIImage) -> UIImage {
+        // TODO: Resize image to small
+        return image
+    }
 }
