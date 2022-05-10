@@ -17,7 +17,7 @@ struct EditProfileView: View {
     @State private var introduction = ""
     
     @State private var isShowImagePicker = false
-    @State private var image: UIImage? = nil
+    @State private var iconImage: UIImage? = nil
     
     var body: some View {
         NavigationView {
@@ -27,7 +27,7 @@ struct EditProfileView: View {
                     Button(action: {
                         isShowImagePicker.toggle()
                     }) {
-                        if let image = image {
+                        if let image = iconImage {
                             Image(uiImage: image)
                                 .resizable()
                                 .frame(width: iconSide, height: iconSide)
@@ -71,6 +71,9 @@ struct EditProfileView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action :{
                         FireUser.updateMyUser(userName: userName, displayName: displayName, introduction: introduction, icon: nil)
+                        if let image = iconImage {
+                            FireImage.uploadImage(image: image)
+                        }
                         dismiss()
                     }) {
                         Text("done")
@@ -83,7 +86,7 @@ struct EditProfileView: View {
         .onAppear(perform: load)
         
         .sheet(isPresented: $isShowImagePicker) {
-            ImagePickerView(image: $image)
+            ImagePickerView(image: $iconImage)
         }
     }
     
