@@ -45,6 +45,7 @@ struct EditProfileView: View {
                         Divider()
                         
                         TextField("user-name", text: $userName)
+                            .padding(.top, 4)
                         Divider()
                     }
                     
