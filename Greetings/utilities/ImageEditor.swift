@@ -8,6 +8,7 @@
 import UIKit
 
 class ImageEditor {
+    
     static func toSquare(from: UIImage) -> UIImage {
         var image = from
         
@@ -24,10 +25,13 @@ class ImageEditor {
         } else {
             origin = CGPoint(x: (image.size.height - image.size.width) * 0.5, y: 0.0)
         }
+        
         UIGraphicsBeginImageContextWithOptions(CGSize(width: oneSide, height: oneSide), false, 0.0)
         image.draw(in: CGRect(origin: origin, size: CGSize(width: image.size.width, height: image.size.height)))
         image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+        
+        print("Image changed to square. width: \(image.size.width), height: \(image.size.height)")
         
         return image
     }
