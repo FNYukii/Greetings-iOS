@@ -15,9 +15,8 @@ class FireImage {
 
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        let imageRef = storageRef.child("images/icon.png")
+        let imageRef = storageRef.child("icons/\(FireAuth.userId()).png")
         
         imageRef.putData(data, metadata: nil)
     }
-    
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ImageResizer {
     
@@ -36,9 +37,15 @@ class ImageResizer {
         return image
     }
     
-    static func toSmall(image: UIImage) -> UIImage {
-        // TODO: Resize image to small
-        print("Image resized to small. width: \(image.size.width), height: \(image.size.height)")
-        return image
+    static func toSmall(image: UIImage, oneSide: CGFloat) -> UIImage {
+        let resizedSize = CGSize(width: oneSide, height: oneSide)
+        
+        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0)
+        image.draw(in: CGRect(origin: .zero, size: resizedSize))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        print("Image resized to small. width: \(resizedImage.size.width), height: \(resizedImage.size.height)")
+        return resizedImage
     }
 }
