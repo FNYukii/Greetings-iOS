@@ -10,9 +10,7 @@ import Foundation
 
 class ImageResizer {
     
-    static func toSquare(from: UIImage) -> UIImage {
-        var image = from
-        
+    static func resizeToSquare(image: UIImage) -> UIImage {
         var oneSide: CGFloat = 0
         if image.size.width < image.size.height {
             oneSide = image.size.width
@@ -29,23 +27,22 @@ class ImageResizer {
         
         UIGraphicsBeginImageContextWithOptions(CGSize(width: oneSide, height: oneSide), false, 0.0)
         image.draw(in: CGRect(origin: origin, size: CGSize(width: image.size.width, height: image.size.height)))
-        image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        print("Image resized to square. width: \(image.size.width), height: \(image.size.height)")
-        
-        return image
-    }
-    
-    static func toSmall(image: UIImage, oneSide: CGFloat) -> UIImage {
-        let resizedSize = CGSize(width: oneSide, height: oneSide)
-        
-        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0)
-        image.draw(in: CGRect(origin: .zero, size: resizedSize))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        print("Image resized to small. width: \(resizedImage.size.width), height: \(resizedImage.size.height)")
+        print("Image resized to square. width: \(resizedImage.size.width), height: \(resizedImage.size.height)")
+        return resizedImage
+    }
+    
+    static func resize(image: UIImage, oneSide: CGFloat) -> UIImage {
+        let size = CGSize(width: oneSide, height: oneSide)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        image.draw(in: CGRect(origin: .zero, size: size))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        print("Image resized. width: \(resizedImage.size.width), height: \(resizedImage.size.height)")
         return resizedImage
     }
 }

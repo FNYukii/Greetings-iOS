@@ -22,8 +22,8 @@ struct ImagePickerView: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let image = info[.originalImage] as? UIImage {
-                let img = ImageResizer.toSquare(from: image)
-                parent.image = ImageResizer.toSmall(image: img, oneSide: 60)
+                let img = ImageResizer.resizeToSquare(image: image)
+                parent.image = ImageResizer.resize(image: img, oneSide: 60)
             }
             parent.presentationMode.wrappedValue.dismiss()
         }
