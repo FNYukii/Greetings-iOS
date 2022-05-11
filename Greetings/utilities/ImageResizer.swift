@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageEditor {
+class ImageResizer {
     
     static func toSquare(from: UIImage) -> UIImage {
         var image = from
@@ -31,13 +31,14 @@ class ImageEditor {
         image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        print("Image changed to square. width: \(image.size.width), height: \(image.size.height)")
+        print("Image resized to square. width: \(image.size.width), height: \(image.size.height)")
         
         return image
     }
     
     static func toSmall(image: UIImage) -> UIImage {
         // TODO: Resize image to small
+        print("Image resized to small. width: \(image.size.width), height: \(image.size.height)")
         return image
     }
 }
