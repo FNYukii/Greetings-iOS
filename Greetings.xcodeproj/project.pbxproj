@@ -46,7 +46,7 @@
 		546DD53E2828070A005CCBBA /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD53D2828070A005CCBBA /* UserViewModel.swift */; };
 		546DD5402828ECC9005CCBBA /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD53F2828ECC9005CCBBA /* ImagePickerView.swift */; };
 		546DD542282937CF005CCBBA /* FireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DD541282937CF005CCBBA /* FireImage.swift */; };
-		54BCD589282AADED00811EAA /* ImageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCD588282AADED00811EAA /* ImageEditor.swift */; };
+		54BCD589282AADED00811EAA /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCD588282AADED00811EAA /* ImageResizer.swift */; };
 		54FECA47282683EC00C09024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA46282683EC00C09024 /* ProfileView.swift */; };
 		54FECA4928274D5700C09024 /* PostsByUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */; };
 		54FECA4B282757D400C09024 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FECA4A282757D400C09024 /* FollowingsView.swift */; };
@@ -90,7 +90,7 @@
 		546DD53D2828070A005CCBBA /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		546DD53F2828ECC9005CCBBA /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		546DD541282937CF005CCBBA /* FireImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireImage.swift; sourceTree = "<group>"; };
-		54BCD588282AADED00811EAA /* ImageEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditor.swift; sourceTree = "<group>"; };
+		54BCD588282AADED00811EAA /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		54FECA46282683EC00C09024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		54FECA4828274D5700C09024 /* PostsByUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsByUserViewModel.swift; sourceTree = "<group>"; };
 		54FECA4A282757D400C09024 /* FollowingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingsView.swift; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 				542E345128253DB900D70981 /* FirePost.swift */,
 				542E3455282542E100D70981 /* FireUser.swift */,
 				546DD541282937CF005CCBBA /* FireImage.swift */,
-				54BCD588282AADED00811EAA /* ImageEditor.swift */,
+				54BCD588282AADED00811EAA /* ImageResizer.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 				542E345A282660E100D70981 /* SignUpView.swift in Sources */,
 				546DD53E2828070A005CCBBA /* UserViewModel.swift in Sources */,
 				542E342D2824D92F00D70981 /* SecondView.swift in Sources */,
-				54BCD589282AADED00811EAA /* ImageEditor.swift in Sources */,
+				54BCD589282AADED00811EAA /* ImageResizer.swift in Sources */,
 				542E34332824DC9F00D70981 /* CreatePostView.swift in Sources */,
 				542E3456282542E100D70981 /* FireUser.swift in Sources */,
 				542E34162824D43800D70981 /* GreetingsApp.swift in Sources */,
